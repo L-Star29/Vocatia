@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <script type="module" src="app.js"></script>
+    <script type="module" src="jobs.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <title>Vocatia</title>
+    <link rel="icon" type="image/svg+xml" href="vocatia-backdrop-fit.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Kaushan+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Kaushan+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+
+<body>
+
+    <!--BANNER-->
+
+    <div class="banner">
+        <a href="index.html" class="logo-image-container">
+            <img src="Vocatia.svg" class="logo-image" />
+            <img src="VocatiaTextLogoInverted.svg" class="logo-content" />
+        </a>
+        <a onclick="showFullMenu()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="menu-alt"
+                class="menu-icon" fill="#000000">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <path d="M21,19H3a1,1,0,0,1,0-2H21a1,1,0,0,1,0,2Z" style="fill:#FFFFFF"></path>
+                    <path d="M21,13H3a1,1,0,0,1,0-2H21a1,1,0,0,1,0,2Z" style="fill:#FFFFFF"></path>
+                    <path d="M21,7H3A1,1,0,0,1,3,5H21a1,1,0,0,1,0,2Z" style="fill:#FFFFFF"></path>
+                </g>
+            </svg></a>
+        <div class="link-group" id="the links">
+            <a href="index.html">
+                <p class="bannerp">Home</p>
+            </a>
+            <a href="postings.html">
+                <p class="bannerp">Postings</p>
+            </a>
+            <a href="how-to.html">
+                <p class="bannerp">How To</p>
+            </a>
+            <a href="about-us.html">
+                <p class="bannerp">About Us</p>
+            </a>
+
+            <a href="login.html">
+                <button class="secondary-button log-in-button">
+                    Log In
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <!--HEADER-->
+
+    <div class="title" id="page-start">
+        <div class="title-container">
+        </div>
+        <a><button class="title-topbutton"><svg width="20px" height="20px" viewBox="0 0 72 72" id="emoji"
+                    xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <g id="color">
+                            <circle cx="36" cy="36" r="28" fill="#5199f8"></circle>
+                        </g>
+                        <g id="line">
+                            <circle cx="36" cy="36" r="28" fill="none" stroke="#000000" stroke-linejoin="round"
+                                stroke-width="0.6479999999999999"></circle>
+                        </g>
+                    </g>
+                </svg>
+                New postings available!</button></a>
+        <h1 class="title-h1">Connecting <span class="glow-talent">Talent </span> &nbsp;With Careers</h1>
+        <p class="title-p">We pair talented students with jobs in a seamless experience.</p>
+    </div>
+    <div class="border-line"></div>
+
+    <div class="job-search">
+        <div class="job-search-container">
+            <div class="input-wrapper">
+                <div class="input">
+                    <div class="glow left"></div>
+                    <div class="glow right"></div>
+
+                    <input id="job-title" type="text" name="text" placeholder="Job Title..." />
+
+                    <div class="reflection"></div>
+
+                    <div class="icon">
+                        <svg stroke="#fff" viewBox="0 0 38 38" height="1em" width="1em"
+                            xmlns="http://www.w3.org/2000/svg" class="loading">
+                            <g fill-rule="evenodd" fill="none">
+                                <g stroke-width="3" transform="translate(1 1)">
+                                    <circle r="18" cy="18" cx="18" stroke-opacity=".2"></circle>
+                                    <path d="M36 18c0-9.94-8.06-18-18-18"></path>
+                                </g>
+                            </g>
+                        </svg>
+
+                        <svg viewBox="0 0 490.4 490.4" version="1.1" width="1em" height="1em" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg" class="magnifier">
+                            <path
+                                d="M484.1,454.796l-110.5-110.6c29.8-36.3,47.6-82.8,47.6-133.4c0-116.3-94.3-210.6-210.6-210.6S0,94.496,0,210.796   s94.3,210.6,210.6,210.6c50.8,0,97.4-18,133.8-48l110.5,110.5c12.9,11.8,25,4.2,29.2,0C492.5,475.596,492.5,463.096,484.1,454.796z    M41.1,210.796c0-93.6,75.9-169.5,169.5-169.5s169.6,75.9,169.6,169.5s-75.9,169.5-169.5,169.5S41.1,304.396,41.1,210.796z">
+                            </path>
+                        </svg>
+                    </div>
+
+                    <button class="filter" id="search-button" onclick="searchJobsAndRedirect()">
+                        <span>
+                            <p>Search</p>
+                        </span>
+                    </button>
+
+                </div>
+                <div class="glow-outline"></div>
+                <div class="glow-layer-bg"></div>
+                <div class="glow-layer-1"></div>
+                <div class="glow-layer-2"></div>
+                <div class="glow-layer-3"></div>
+                <div class="glow left"></div>
+                <div class="glow right"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--JOB-RISE-->
+
+    <div class="job-rise">
+        <div class="bg-card">
+            <div class="card2">
+                <div class="loader"></div>
+            </div>
+        </div>
+        <div class="job-rise-content">
+            <h1><span class="glow-talent">Rise </span>up to the Job</h1>
+            <p>Getting a job as a teenager can be a life-changing experience with numerous benefits. It helps you build
+                essential skills like time management, responsibility, and teamwork, all of which are valuable in
+                school, extracurricular activities, and future careers. Working also boosts your independence and
+                confidence, teaching you how to handle real-world tasks and challenges. Not to mention, having a job
+                provides financial rewards, allowing you to manage your money and save for the future.</p>
+        </div>
+    </div>
+
+    <!--TESTIMONIALS-->
+
+    <div class="testimonials">
+        <div class="testimonial-container">
+            <h2>Testimonials</h2>
+            <div class="testimonials-content">
+                <figure class="testimonial quote-1">
+                    <svg aria-hidden="true" width="105" height="78" class="quote">
+                        <path
+                            d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z">
+                        </path>
+                    </svg>
+                    <blockquote>
+                        <p>
+                            As a guidance counselor at our school, I’ve been thrilled to see how this platform has
+                            empowered our students. It’s an invaluable tool that helps them connect with job
+                            opportunities and gain real-world experience. We look forward to continuing our partnership
+                            and seeing even
+                            more positive impact moving forward!
+                        </p>
+                    </blockquote>
+                    <figcaption>
+                        <div class="caption-text">
+                            <div class="caption-name">Sarah Angel</div>
+                            <div class="caption-title">JRT IB Guidance Counselor</div>
+                        </div>
+                        <div class="caption-image"></div>
+                    </figcaption>
+                </figure>
+                <figure class="testimonial quote-2">
+                    <svg aria-hidden="true" width="105" height="78" class="quote">
+                        <path
+                            d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z">
+                        </path>
+                    </svg>
+                    <blockquote>
+                        <p>
+                            As a student, this platform has been an incredible resource in helping me find job
+                            opportunities that align with my career goals. It’s easy to use, and I love how it connects
+                            me directly with employers looking for candidates like me. Thanks to this platform, I feel
+                            more confident about entering the workforce, and I’m excited to see where these
+                            opportunities take me!
+                        </p>
+                    </blockquote>
+                    <figcaption>
+                        <div class="caption-text">
+                            <div class="caption-name">Sam P.</div>
+                            <div class="caption-title">JRT IB Junior</div>
+                        </div>
+                        <div class="caption-image"></div>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+
+    <!--OUR VISION/MISSION-->
+
+    <div class="vision">
+        <img src="binoculars.png" />
+        <div class="visionText">
+            <h2>Our Vision</h2>
+            <p>
+                Vocatia is designed to bridge the gap between students and career opportunities, helping them find jobs
+                that align with their skills and interest.
+            </p>
+        </div>
+    </div>
+    <div class="mission">
+        <img src="mission.png" />
+        <div class="missionText">
+            <h2>Our Mission</h2>
+            <p>
+                Our mission is to support students in discovering meaningful employment paths while providing employers
+                with a streamlined way to connect with talented candidates.
+            </p>
+        </div>
+    </div>
+
+    <!--CTA-->
+
+    <section class="cta-section">
+        <div class="cta-card">
+            <h1 class="cta-heading">Ready to Find Your Next Job?</h1>
+            <p class="cta-subtext">Join Vocatia today and connect with employers fast.</p>
+            <a href="postings.html" class="primary-button"><span>Apply Now</span></a>
+        </div>
+    </section>
+
+    <!--FOOTER-->
+
+    <div class="footer">
+        <div class="logo-content">
+            <img src="vocatia-backdrop-fit.svg" style="
+                width: 75px;
+                height: 75px;
+                margin-right: 100px;
+                padding: 10px;
+                border-radius: 50%;
+                margin-top: 40px;
+                background-color: darkblue;
+                box-shadow:
+                  0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                  0 6px 20px 0 rgba(0, 0, 0, 0.19);
+              " />
+        </div>
+        <div style="display: flex; flex-direction: column">
+            <p><b>Pages</b></p>
+            <a href="index.html">Home</a>
+            <a href="postings.html">Postings</a>
+            <a href="how-to.html">How To</a>
+            <a href="about-us.html">About Us</a>
+        </div>
+        <div class="developed-by">
+            <p><b>Developed By</b></p>
+            <a href="about-us.html#lokesh">Lokesh Rajagopal</a>
+            <a href="about-us.html#akshar">Akshar Guntapudi</a>
+        </div>
+        <div class="top-icon"><a href="#page-start"><svg fill="#100f89" width="64px" height="64px" viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg" stroke="#100f89">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <title>ionicons-v5-b</title>
+                        <path
+                            d="M256,48C141.13,48,48,141.13,48,256s93.13,208,208,208,208-93.13,208-208S370.87,48,256,48Zm74.14,252H181.86a16,16,0,0,1-12.29-26.23l74.13-89.09a16,16,0,0,1,24.6,0l74.13,89.09A16,16,0,0,1,330.14,300Z">
+                        </path>
+                    </g>
+                </svg> 
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

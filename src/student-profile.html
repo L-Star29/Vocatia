@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <script type="module" src="app.js"></script>
+    <script type="module" src="jobs.js"></script>
+    <link href="log-in.css" rel="stylesheet" type="text/css" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <title>Vocatia</title>
+    <link rel="icon" type="image/svg+xml" href="vocatia-backdrop-fit.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Kaushan+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Kaushan+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="banner">
+        <a href="index.html" class="logo-image-container">
+            <img src="Vocatia.svg" class="logo-image" />
+            <img src="VocatiaTextLogoInverted.svg" class="logo-content" />
+        </a>
+        <a onclick="showFullMenu()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="menu-alt"
+                class="menu-icon" fill="#000000">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <path d="M21,19H3a1,1,0,0,1,0-2H21a1,1,0,0,1,0,2Z" style="fill:#FFFFFF"></path>
+                    <path d="M21,13H3a1,1,0,0,1,0-2H21a1,1,0,0,1,0,2Z" style="fill:#FFFFFF"></path>
+                    <path d="M21,7H3A1,1,0,0,1,3,5H21a1,1,0,0,1,0,2Z" style="fill:#FFFFFF"></path>
+                </g>
+            </svg></a>
+        <div class="link-group" id="the links">
+            <a href="index.html">
+                <p class="bannerp">Home</p>
+            </a>
+            <a href="postings.html">
+                <p class="bannerp">Postings</p>
+            </a>
+            <a href="how-to.html">
+                <p class="bannerp">How To</p>
+            </a>
+            <a href="about-us.html">
+                <p class="bannerp">About Us</p>
+            </a>
+            <a href="login.html">
+                <button class="secondary-button log-in-button">
+                    Log In
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <div class="form-container profile-completion-form">
+        <p class="login-form-header">Profile Completion</p>
+        <form class="form">
+            <div class="input-group">
+                <label for="bio">Bio</label>
+                <textarea id="bio" name="bio" placeholder="Who are you?" required></textarea>
+            </div>
+
+            <div class="input-group">
+                <label for="education">Education Level</label>
+                <input type="text" id="education" name="education" placeholder="e.g., High School, Bachelor's" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="skills">Skills</label>
+                <textarea id="skills" name="skills" placeholder="List your skills here" required></textarea>
+            </div>
+
+            <div class="input-group">
+                <label for="work-experience">Prior Experience (Optional)</label>
+                <textarea id="work-experience" name="work-experience" placeholder="List your prior experience here" required></textarea>
+            </div>
+
+            <button class="profile-completion" type="submit">Save Profile</button>
+        </form>
+    </div>
+</body>
+
+</html>

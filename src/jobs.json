@@ -1,0 +1,310 @@
+[
+    {
+      "title": "Social Media Intern",
+      "company": "Alikosis",
+      "salary": "$15/hour",
+      "location": "Baltimore, Maryland",
+      "expiryDate": "2025-07-15",
+      "jobType": "Internship",
+      "experienceLevel": "Entry Level",
+      "workType": "Remote",
+      "jobDescription": "Assist in developing and posting content for Instagram, TikTok, and LinkedIn.",
+      "benefits": [
+        "Gain real-world social media marketing skills",
+        "Work with a creative team",
+        "Flexible schedule",
+        "Mentorship from marketing leads"
+      ],
+      "responsibilities": [
+        "Create and schedule posts",
+        "Track performance metrics",
+        "Engage with followers",
+        "Attend weekly team meetings"
+      ],
+      "qualifications": [
+        "Familiarity with Canva or Adobe Express",
+        "Basic copywriting skills",
+        "Strong communication",
+        "Attention to detail"
+      ],
+      "requiresWorkAuth": false,
+      "employerId": "WD0n8GC9H5RheuufBvO6U1AkCba2"
+    },
+    {
+      "title": "Front Desk Assistant",
+      "company": "Urban Youth Center",
+      "salary": "$13/hour",
+      "location": "Philadelphia, Pennsylvania",
+      "expiryDate": "2025-07-10",
+      "jobType": "Part-time",
+      "experienceLevel": "Entry Level",
+      "workType": "In-person",
+      "jobDescription": "Greet and assist visitors, manage sign-ins, and answer basic inquiries at the center.",
+      "benefits": [
+        "Professional experience in a non-profit",
+        "Team-oriented environment",
+        "Training provided"
+      ],
+      "responsibilities": [
+        "Greet all incoming guests",
+        "Maintain visitor logs",
+        "Answer phones and take messages",
+        "Provide information to students and parents"
+      ],
+      "qualifications": [
+        "High school diploma or equivalent",
+        "Good verbal communication",
+        "Punctuality and reliability"
+      ],
+      "requiresWorkAuth": true,
+      "employerId": "hxFEcyoXgfRSH1XXf71xOZ2J6152"
+    },
+    {
+      "title": "Camp Counselor",
+      "company": "SummerSpark Camps",
+      "salary": "$16/hour",
+      "location": "Hartford, Connecticut",
+      "expiryDate": "2025-06-30",
+      "jobType": "Seasonal",
+      "experienceLevel": "Entry Level",
+      "workType": "In-person",
+      "jobDescription": "Supervise and engage campers in daily activities while ensuring safety and fun.",
+      "benefits": [
+        "Free lunch daily",
+        "Outdoor activity experience",
+        "Leadership development",
+        "Team bonding events"
+      ],
+      "responsibilities": [
+        "Lead games and activities",
+        "Supervise children at all times",
+        "Ensure a positive and safe environment",
+        "Assist with set-up and clean-up"
+      ],
+      "qualifications": [
+        "Enjoy working with children",
+        "Able to be active all day",
+        "Pass background check",
+        "First aid/CPR certification is a plus"
+      ],
+      "requiresWorkAuth": false,
+      "employerId": "5BiU66Y841ZUAxp1FkOR8lnodzr2"
+    },
+    {
+      "title": "IT Support Assistant",
+      "company": "ByteTech Solutions",
+      "salary": "$18/hour",
+      "location": "Remote",
+      "expiryDate": "2025-07-20",
+      "jobType": "Part-time",
+      "experienceLevel": "Mid-level",
+      "workType": "Remote",
+      "jobDescription": "Provide remote technical support to users and assist with routine system maintenance.",
+      "benefits": [
+        "Remote work flexibility",
+        "Tech certification reimbursements",
+        "Work with enterprise-grade systems",
+        "Access to internal tools"
+      ],
+      "responsibilities": [
+        "Respond to help desk tickets",
+        "Diagnose software and hardware issues",
+        "Document solutions in the knowledge base",
+        "Escalate complex cases"
+      ],
+      "qualifications": [
+        "Experience with Windows and Mac OS",
+        "Familiar with basic networking",
+        "Excellent problem-solving skills",
+        "1+ years in a tech support role"
+      ],
+      "requiresWorkAuth": true,
+      "employerId": "Hdj8VAf4QzLMKeLXvvRHLLWZUao2"
+    },
+    {
+      "title": "Graphic Design Intern",
+      "company": "PixelPoint Media",
+      "salary": "$14/hour",
+      "location": "San Diego, California",
+      "expiryDate": "2025-07-25",
+      "jobType": "Internship",
+      "experienceLevel": "Entry Level",
+      "workType": "Remote",
+      "jobDescription": "Create visual content for social media, email campaigns, and branding projects.",
+      "benefits": [
+        "Professional portfolio review",
+        "Mentorship from senior designers",
+        "Flexible hours",
+        "Real-world design challenges"
+      ],
+      "responsibilities": [
+        "Design graphics for social and web",
+        "Participate in creative brainstorms",
+        "Revise designs based on feedback",
+        "Assist in brand consistency checks"
+      ],
+      "qualifications": [
+        "Basic knowledge of Adobe Photoshop/Illustrator",
+        "Creative mindset",
+        "Time management skills",
+        "Attention to visual detail"
+      ],
+      "requiresWorkAuth": false,
+      "employerId": "hxFEcyoXgfRSH1XXf71xOZ2J6152"
+    },
+    {
+      "title": "Barista",
+      "company": "Brew & Co.",
+      "salary": "$13.50/hour",
+      "location": "Richmond, Virginia",
+      "expiryDate": "2025-07-05",
+      "jobType": "Part-time",
+      "experienceLevel": "Entry Level",
+      "workType": "In-person",
+      "jobDescription": "Prepare and serve coffee beverages while ensuring excellent customer service.",
+      "benefits": [
+        "Free drinks while working",
+        "Flexible hours",
+        "Employee discounts",
+        "Tips"
+      ],
+      "responsibilities": [
+        "Take customer orders",
+        "Operate espresso machine",
+        "Maintain cleanliness of work area",
+        "Restock ingredients and supplies"
+      ],
+      "qualifications": [
+        "Strong interpersonal skills",
+        "Able to multitask in a fast-paced environment",
+        "Reliable transportation",
+        "Prior café experience is a plus"
+      ],
+      "requiresWorkAuth": true,
+      "employerId": "WD0n8GC9H5RheuufBvO6U1AkCba2"
+    },
+    {
+      "title": "Data Entry Clerk",
+      "company": "MobiTrack",
+      "salary": "$17/hour",
+      "location": "Remote",
+      "expiryDate": "2025-07-18",
+      "jobType": "Full-time",
+      "experienceLevel": "Mid-level",
+      "workType": "Remote",
+      "jobDescription": "Input and verify data for company systems to maintain accurate and up-to-date records.",
+      "benefits": [
+        "Remote work setup allowance",
+        "Health benefits after 60 days",
+        "Annual bonus eligibility"
+      ],
+      "responsibilities": [
+        "Input data into internal systems",
+        "Audit for accuracy",
+        "Report errors to supervisors",
+        "Meet daily data entry quotas"
+      ],
+      "qualifications": [
+        "Typing speed of 60+ WPM",
+        "Basic spreadsheet skills",
+        "Attention to detail",
+        "Reliable internet connection"
+      ],
+      "requiresWorkAuth": true,
+      "employerId": "5BiU66Y841ZUAxp1FkOR8lnodzr2"
+    },
+    {
+      "title": "Tutor – Algebra I",
+      "company": "Elevate Education",
+      "salary": "$20/hour",
+      "location": "Atlanta, Georgia",
+      "expiryDate": "2025-08-01",
+      "jobType": "Part-time",
+      "experienceLevel": "Entry Level",
+      "workType": "Remote",
+      "jobDescription": "Help students build foundational skills and confidence in Algebra I.",
+      "benefits": [
+        "Paid prep time",
+        "Performance bonuses",
+        "Flexible schedule",
+        "Remote teaching tools provided"
+      ],
+      "responsibilities": [
+        "Teach Algebra I via Zoom",
+        "Assess student progress",
+        "Provide homework help",
+        "Communicate with parents as needed"
+      ],
+      "qualifications": [
+        "A in Algebra I or higher",
+        "Strong communication skills",
+        "Patient and student-focused",
+        "Comfortable with virtual tools"
+      ],
+      "requiresWorkAuth": false,
+      "employerId": "Hdj8VAf4QzLMKeLXvvRHLLWZUao2"
+    },
+    {
+      "title": "Warehouse Associate",
+      "company": "FastMove Logistics",
+      "salary": "$16/hour",
+      "location": "Detroit, Michigan",
+      "expiryDate": "2025-07-22",
+      "jobType": "Full-time",
+      "experienceLevel": "Entry Level",
+      "workType": "In-person",
+      "jobDescription": "Pick, pack, and ship customer orders in a fast-paced warehouse environment.",
+      "benefits": [
+        "Health insurance after 90 days",
+        "Paid training",
+        "Weekly pay",
+        "Team lunches every Friday"
+      ],
+      "responsibilities": [
+        "Pack items securely",
+        "Use inventory scanners",
+        "Load shipments onto trucks",
+        "Keep warehouse clean"
+      ],
+      "qualifications": [
+        "Able to lift 50 lbs regularly",
+        "Good physical stamina",
+        "Work boots required",
+        "Teamwork mindset"
+      ],
+      "requiresWorkAuth": true,
+      "employerId": "hxFEcyoXgfRSH1XXf71xOZ2J6152"
+    },
+    {
+      "title": "Event Volunteer",
+      "company": "Green Planet Foundation",
+      "salary": "$0 (Volunteer)",
+      "location": "Seattle, Washington",
+      "expiryDate": "2025-07-12",
+      "jobType": "Volunteer",
+      "experienceLevel": "Entry Level",
+      "workType": "In-person",
+      "jobDescription": "Assist with organizing and supporting sustainability awareness events.",
+      "benefits": [
+        "Certificate of service",
+        "Free event t-shirts",
+        "Snacks and drinks provided",
+        "Meet local changemakers"
+      ],
+      "responsibilities": [
+        "Set up booths",
+        "Help attendees find activities",
+        "Support speakers and vendors",
+        "Clean up after event"
+      ],
+      "qualifications": [
+        "Interest in sustainability",
+        "Able to stand for long periods",
+        "Friendly and outgoing",
+        "Available on weekends"
+      ],
+      "requiresWorkAuth": false,
+      "employerId": "5BiU66Y841ZUAxp1FkOR8lnodzr2"
+    }
+  ]
+  

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="app.js"></script>
+    <script type="module" src="jobs.js"></script>
+    <script src="script.js" defer></script>
+    <link href="add-job.css" rel="stylesheet" type="text/css" />
+    <title>Vocatia</title>
+    <link rel="icon" type="image/svg+xml" href="vocatia-backdrop-fit.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Kaushan+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Kaushan+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!--BANNER-->
+
+    <div class="banner">
+        <a href="index.html" class="logo-image-container">
+            <img src="Vocatia.svg" class="logo-image" />
+            <img src="VocatiaTextLogoInverted.svg" class="logo-content" />
+        </a>
+        <a onclick="showFullMenu()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="menu-alt"
+                class="menu-icon" fill="#000000">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <path d="M21,19H3a1,1,0,0,1,0-2H21a1,1,0,0,1,0,2Z" style="fill:#FFFFFF"></path>
+                    <path d="M21,13H3a1,1,0,0,1,0-2H21a1,1,0,0,1,0,2Z" style="fill:#FFFFFF"></path>
+                    <path d="M21,7H3A1,1,0,0,1,3,5H21a1,1,0,0,1,0,2Z" style="fill:#FFFFFF"></path>
+                </g>
+            </svg></a>
+        <div class="link-group" id="the links">
+            <a href="index.html">
+                <p class="bannerp">Home</p>
+            </a>
+            <a href="employer-dashboard.html">
+                <p class="bannerp">Dashboard</p>
+            </a>
+            <a href="how-to.html">
+                <p class="bannerp">How To</p>
+            </a>
+            <a href="about-us.html">
+                <p class="bannerp">About Us</p>
+            </a>
+
+            <a href="login.html">
+                <button class="secondary-button log-in-button">
+                    Log In
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <div class="add-job-main">
+        <div class="add-job-header">
+            <h1 class="add-job-title">Add a <span class="purple-special">New Job</span></h1>
+            <p class="add-job-description">Fill out the form below to create a new job posting.</p>
+        </div>
+
+    
+
+        <div class="container">
+            <form id="add-job-form" class="form">
+                <div class="new-job-form">
+                    <div class="form-section-header">
+                        <h2 class="heading">Basic information</h2>
+                        <p class="add-job-description">Please enter basic information about the job you are posting.</p>
+                    </div> 
+                    
+                    <div class="form-input-section">
+                        <div class="input-field">
+                            <label for="title">Title:</label>
+                            <input required autocomplete="off" type="text" name="title" id="title" placeholder="e.g. Job #1" />
+                        </div>
+                        <div class="input-field">
+                            <label for="company">Company:</label>
+                            <input required autocomplete="off" type="text" name="company" id="company" placeholder="e.g. Alikosis" />
+                        </div>
+                        <div class="input-field">
+                            <label for="salary">Salary (per hour):</label>
+                            <input required autocomplete="off" type="number" name="salary" id="salary" placeholder="e.g. 14" />
+                        </div>
+                        <div class="input-field">
+                            <label for="location">Location:</label>
+                            <input required autocomplete="off" type="text" name="location" id="location" placeholder="e.g. Baltimore, Maryland" />
+                        </div>
+                        <div class="input-section">
+                            <div class="input-field">
+                                <label for="expiry-date">Expiry Date:</label>
+                                <input required type="date" name="expiry-date" id="expiry-date" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="new-job-form">
+                    <div class="form-section-header">
+                        <h2 class="heading">Work information</h2>
+                        <p class="add-job-description">Please enter information regarding the work the applicant will be doing.</p>
+                    </div> 
+                    
+                    <div class="form-input-section">
+                        
+                        <div class="input-field">
+                            <label for="job-type">Job Type:</label>
+                            <select required name="type" id="job-type">
+                                <option value="" disabled selected>Select a job type</option>
+                                <option value="full-time">Full-time</option>
+                                <option value="part-time">Part-time</option>
+                                <option value="internship">Internship</option>
+                                <option value="seasonal">Seasonal</option>
+                                <option value="volunteer">Volunteer</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label for="work-type">Experience Level:</label>
+                            <select required name="type" id="experience-level">
+                                <option value="" disabled selected>Select an experience level</option>
+                                <option value="entry-level">Entry Level</option>
+                                <option value="mid-level">Mid-level</option>
+                                <option value="senior-level">Senior Level</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label for="work-type">Work Type:</label>
+                            <select required name="type" id="work-type">
+                                <option value="" disabled selected>Select a work type</option>
+                                <option value="in-person">In-person</option>
+                                <option value="remote">Remote</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="new-job-form">
+                    <div class="form-section-header">
+                        <h2 class="heading">Job Description</h2>
+                        <p class="add-job-description">Please enter information regarding the job.</p>
+                    </div> 
+                    
+                    <div class="form-input-section">
+                        
+                        <div class="input-field">
+                            <label for="job-description">About the job:</label>
+                            <textarea required autocomplete="off" name="job-description" id="job-description" placeholder="Description"></textarea>
+                        </div>
+                        <div class="input-field">
+                            <label for="benefits">Benefits:</label>
+                            <div id="benefits-container">
+                                <input required autocomplete="off" type="text" name="benefits" id="benefits" placeholder="e.g. Gain real-world problem-solving skills" />
+                            </div>
+                            <div class="form-btn-container">
+                                <button type="button" id="add-benefit-btn" class="third-btn"><span class="bigger">+</span> Add Benefit</button>
+                                <button type="button" id="remove-benefit-btn" class="third-btn"><span class="bigger">-</span> Remove Benefit</button>
+                            </div>
+                        </div>
+                        
+                        <div class="input-field">
+                            <label for="responsibility">Responsibilities:</label>
+                            <div id="responsibility-container">
+                                <input required autocomplete="off" type="text" name="responsibility" id="responsibility" placeholder="e.g. Maintain volunteer records and reports." />
+                            </div>
+                            <div class="form-btn-container">
+                                <button type="button" id="add-responsibility-btn" class="third-btn"><span class="bigger">+</span> Add Responsibility</button>
+                                <button type="button" id="remove-responsibility-btn" class="third-btn"><span class="bigger">-</span> Remove Responsibility</button>
+                            </div> 
+                        </div>
+                        
+                        <div class="input-field">
+                            <label for="pre-qualification">Pre-qualifications:</label>
+                            <div id="pre-qualification-container">
+                                <input required autocomplete="off" type="text" name="pre-qualification" id="pre-qualification" placeholder="e.g. Pass Geometry II with a C or above." />
+                            </div>
+                            <div class="form-btn-container">
+                                <button type="button" id="add-pre-qualification-btn" class="third-btn"><span class="bigger">+</span> Add Requirement</button>
+                                <button type="button" id="remove-pre-qualification-btn" class="third-btn"><span class="bigger">-</span> Remove Requirement</button>
+                            </div>
+                        </div>
+                        <div class="input-field checkbox-input">
+                            <input type="checkbox" name="work-authorization" id="work-authorization" />
+                            <label>This job does NOT require the applicant to have work authorization.</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-container">
+                    <button type="submit" class="secondary-button">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--FOOTER-->
+
+    <div class="footer">
+        <div class="logo-content">
+            <img src="vocatia-backdrop-fit.svg" style="
+                width: 75px;
+                height: 75px;
+                margin-right: 100px;
+                padding: 10px;
+                border-radius: 50%;
+                margin-top: 40px;
+                background-color: darkblue;
+                box-shadow:
+                  0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                  0 6px 20px 0 rgba(0, 0, 0, 0.19);
+              " />
+        </div>
+        <div style="display: flex; flex-direction: column">
+            <p><b>Pages</b></p>
+            <a href="index.html">Home</a>
+            <a href="postings.html">Postings</a>
+            <a href="how-to.html">How To</a>
+            <a href="about-us.html">About Us</a>
+        </div>
+        <div class="developed-by">
+            <p><b>Developed By</b></p>
+            <a href="about-us.html#lokesh">Lokesh Rajagopal</a>
+            <a href="about-us.html#akshar">Akshar Guntapudi</a>
+        </div>
+        <div class="top-icon"><a href="#page-start"><svg fill="#100f89" width="64px" height="64px" viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg" stroke="#100f89">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <title>ionicons-v5-b</title>
+                        <path
+                            d="M256,48C141.13,48,48,141.13,48,256s93.13,208,208,208,208-93.13,208-208S370.87,48,256,48Zm74.14,252H181.86a16,16,0,0,1-12.29-26.23l74.13-89.09a16,16,0,0,1,24.6,0l74.13,89.09A16,16,0,0,1,330.14,300Z">
+                        </path>
+                    </g>
+                </svg> 
+            </a>
+        </div>
+    </div>
+
+    <div id="popup-message" style="display: none;">
+        <div class="popup-content">
+            <button class="popup-close" aria-label="Close popup">&times;</button>
+            <p id="popup-text"></p>
+            <button class="popup-ok">OK</button>
+        </div>
+    </div>
+</body>
+
+</html>

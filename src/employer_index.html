@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <script type="module" src="app.js"></script>
+    <script type="module" src="jobs.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <title>Vocatia</title>
+    <link rel="icon" type="image/svg+xml" href="vocatia-backdrop-fit.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Kaushan+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Kaushan+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+
+<body>
+
+    <!--BANNER-->
+
+    <div class="banner">
+        <a href="index.html" class="logo-image-container">
+            <img src="Vocatia.svg" class="logo-image" />
+            <img src="VocatiaTextLogoInverted.svg" class="logo-content" />
+        </a>
+        <a onclick="showFullMenu()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="menu-alt"
+                class="menu-icon" fill="#000000">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <path d="M21,19H3a1,1,0,0,1,0-2H21a1,1,0,0,1,0,2Z" style="fill:#FFFFFF"></path>
+                    <path d="M21,13H3a1,1,0,0,1,0-2H21a1,1,0,0,1,0,2Z" style="fill:#FFFFFF"></path>
+                    <path d="M21,7H3A1,1,0,0,1,3,5H21a1,1,0,0,1,0,2Z" style="fill:#FFFFFF"></path>
+                </g>
+            </svg></a>
+        <div class="link-group" id="the links">
+            <a href="index.html">
+                <p class="bannerp">Home</p>
+            </a>
+            <a href="how-to.html">
+                <p class="bannerp">How To</p>
+            </a>
+            <a href="about-us.html">
+                <p class="bannerp">About Us</p>
+            </a>
+
+            <a href="login.html">
+                <button class="secondary-button log-in-button">
+                    Log In
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <!--HEADER-->
+
+    <div class="employer-title">
+        <div class="employer-title-text">
+            <h1 class="employer-title-h1">Find the right talent.<br> Fast & Easy.   </h1>
+            <p class="employer-title-p">Post jobs, connect with young talent, and build your future team - all in one seamless platform.</p>
+            <div class="employer-title-buttons">
+                <a href="employer-postings.html">
+                    <button class="primary-button">
+                        <span>Post New Job</span>
+                    </button>
+                </a>
+                <a href="about-us.html">
+                    <button class="secondary-button">
+                        <span>About-us</span>
+                    </button>
+                </a>
+            </div>
+        </div>
+        <div class="employer-title-image">
+            <div class="employer-image-bg"></div>
+            <img src="employer-title-image-purple.png" alt="Employer Banner" />
+        </div>
+    </div>
+    <div class="employer-border-line"></div>
+
+    <!--BENEFITS-->
+
+    <h1 class="employer-benefits-h1">The Benefits</h1>
+    <div class="employer-benefits-container">
+        <div class="employer-benefit eb1">
+            <div class="purple-overlay">
+                <div class="eb-header-text">
+                    <svg fill="#fff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48px" height="48px" viewBox="0 0 487.811 487.81" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g id="_x33_6_24_"> <g> <path d="M150.463,109.521h150.512c3.955,0,7.16-3.206,7.16-7.161c0-3.955-3.205-7.161-7.16-7.161H150.463 c-3.955,0-7.161,3.206-7.161,7.161C143.302,106.315,146.508,109.521,150.463,109.521z"></path> <path d="M15.853,179.537h150.511c3.955,0,7.161-3.206,7.161-7.161s-3.206-7.16-7.161-7.16H15.853 c-3.955,0-7.161,3.205-7.161,7.16S11.898,179.537,15.853,179.537z"></path> <path d="M56.258,253.214c0,3.955,3.206,7.162,7.161,7.162H213.93c3.955,0,7.161-3.207,7.161-7.162s-3.206-7.16-7.161-7.16H63.419 C59.464,246.054,56.258,249.259,56.258,253.214z"></path> <path d="M142.396,336.44H7.161C3.206,336.44,0,339.645,0,343.6s3.206,7.161,7.161,7.161h135.235c3.955,0,7.161-3.206,7.161-7.161 S146.351,336.44,142.396,336.44z"></path> <path d="M385.729,154.418c21.6,0,39.111-17.513,39.111-39.114s-17.512-39.113-39.111-39.113 c-21.605,0-39.119,17.513-39.119,39.113C346.609,136.905,364.123,154.418,385.729,154.418z"></path> <path d="M450.066,143.155c-22.459,31.459-52.533,35.102-84.895,15.89c-2.203-1.306-11.977-6.691-14.141-7.977 c-52.061-30.906-104.061-18.786-138.934,30.05c-14.819,20.771,19.455,40.459,34.108,19.93 c18.018-25.232,40.929-32.533,65.986-24.541c-12.83,22.27-24.047,44.405-39.875,75.853 c-15.832,31.448-50.787,56.562-84.374,36.92c-24.235-14.165-46.09,20.651-21.928,34.772 c45.854,26.799,99.619,10.343,127.066-24.493c0.952,0.509,1.958,0.968,3.062,1.354c22.422,7.812,51.814,28.61,60.77,35.981 c8.953,7.371,24.336,44.921,33.471,63.788c11.082,22.893,46.871,6.219,35.748-16.771c-10.355-21.406-27.736-64.129-41.293-74.938 c-10.875-8.669-31.988-24.803-49.895-33.956c12.115-23.466,24.729-46.679,38.008-69.491 c42.328,12.969,82.561-2.308,111.215-42.446C498.996,142.312,464.73,122.624,450.066,143.155z"></path> </g> </g> </g> </g></svg>
+                    <h2>Fast & Easy</h2>
+                </div>
+                <ul>
+                    <li>Fill out a simple form to submit your job listing.</li>
+                    <li>Get your posting live and visible to students quickly.</li>
+                    <li>No complicated steps—just a smooth, hassle-free process saving time.</li>
+                    <li>Edit or update your listing anytime with easex.</li>
+                    <li>Stop wasting time and use to save time for other tasks.</li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="employer-benefit eb2">
+            <div class="cyan-overlay">
+                <div class="eb-header-text">
+                    <svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48px" height="48px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve" fill="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path fill="#ffffff" d="M61,29H49c-1.657,0-3,1.344-3,3s1.343,3,3,3h12c1.657,0,3-1.344,3-3S62.657,29,61,29z"></path> <path fill="#ffffff" d="M59.312,44.57l-11.275-4.104c-1.559-0.566-3.279,0.236-3.846,1.793c-0.566,1.555,0.235,3.277,1.793,3.844 l11.276,4.105c1.558,0.566,3.278-0.238,3.845-1.793C61.672,46.859,60.87,45.137,59.312,44.57z"></path> <path fill="#ffffff" d="M48.036,23.531l11.276-4.104c1.557-0.566,2.359-2.289,1.793-3.843c-0.566-1.558-2.288-2.362-3.846-1.796 l-11.275,4.106c-1.559,0.566-2.36,2.289-1.794,3.846C44.757,23.295,46.479,24.098,48.036,23.531z"></path> <path fill="#ffffff" d="M8,48c1.257,0,2.664,0,4,0V16c-1.342,0.002-2.747,0.002-4,0.002V48z"></path> <path fill="#ffffff" d="M0,20.002V44c0,2.211,1.789,4,4,4c0,0,0.797,0,2,0V16.002c-1.204,0-2,0-2,0C1.789,16.002,0,17.791,0,20.002 z"></path> <path fill="#ffffff" d="M37.531,0.307c-1.492-0.625-3.211-0.277-4.359,0.867L18.859,15.486c0,0-0.422,0.515-1.359,0.515 c-0.365,0-1.75,0-3.5,0v32c1.779,0,3.141,0,3.344,0c0.656,0,1.107,0.107,1.671,0.67c0.563,0.564,14.157,14.158,14.157,14.158 C33.938,63.594,34.961,64,36,64c0.516,0,1.035-0.098,1.531-0.305C39.027,63.078,40,61.617,40,60V4.002 C40,2.385,39.027,0.924,37.531,0.307z"></path> </g> </g></svg>
+                    <h2>Reach Young Talent</h2>
+                </div>
+                <ul>
+                    <li>Gain access to a pool of talented, eager-to-learn students.</li>
+                    <li>Find interns, part-time workers, and future full-time employees.</li>
+                    <li>Build your brand among young professionals early on.</li>
+                    <li>Engage directly with students through our platform.</li>
+                    <li>Showcase your company culture with job descriptions.</li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="employer-benefit eb3">
+            <div class="purple-overlay">
+                <div class="eb-header-text">
+                    <svg width="48px" height="48px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M14 10C14 9.44771 13.5523 9 13 9H12.5C9.46243 9 7 11.4624 7 14.5C7 17.5376 9.46243 20 12.5 20H17.5C20.5376 20 23 17.5376 23 14.5C23 12.0091 21.3441 9.90488 19.073 9.22823C18.5098 9.06042 18 9.52887 18 10.1166V10.1683C18 10.6659 18.3745 11.0735 18.8345 11.2634C20.1055 11.788 21 13.0395 21 14.5C21 16.433 19.433 18 17.5 18H12.5C10.567 18 9 16.433 9 14.5C9 12.567 10.567 11 12.5 11H13C13.5523 11 14 10.5523 14 10Z" fill="#ffffff"></path> <path d="M11.5 4C14.5376 4 17 6.46243 17 9.5C17 12.5376 14.5376 15 11.5 15H11C10.4477 15 10 14.5523 10 14C10 13.4477 10.4477 13 11 13H11.5C13.433 13 15 11.433 15 9.5C15 7.567 13.433 6 11.5 6H6.5C4.567 6 3 7.567 3 9.5C3 10.9605 3.89451 12.212 5.16553 12.7366C5.62548 12.9264 6 13.3341 6 13.8317V13.8834C6 14.4711 5.49024 14.9396 4.92699 14.7718C2.65592 14.0951 1 11.9909 1 9.5C1 6.46243 3.46243 4 6.5 4H11.5Z" fill="#ffffff"></path> </g></svg>
+                    <h2>Smart Matching</h2>
+                </div>
+                <ul>
+                    <li>Get applicants tailored to your job requirements.</li>
+                    <li>Filter and manage postings effortlessly.</li>
+                    <li>A streamlined process to find your next employee.</li>
+                    <li>Spend less time searching and more time hiring the right talent.</li>
+                    <li>Track and manage all postings in one place.</li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--STEPS-->
+
+    <div class="employer-steps">
+        <div class="employer-steps-overlay">
+            <h1 class="employer-steps-h1">How to Post a Job</h1>
+            <div class="employer-steps-container">
+                <div class="employer-step step1">
+                    <div class="employer-step-text">
+                        <div class="employer-step-span">
+                            <span>1.</span>
+                        </div>
+                        <h2>Create a Listing</h2>
+                        <p>Start by clicking the "Post New Job" button. Simply fill in the job details, including the role, requirements, and application deadline. Our streamlined form ensures a smooth process, so your listing goes live quickly.</p>
+                    </div>
+                    <div class="employer-step-image">
+                        <img src="new-job-form.png" alt="Create a Listing" />
+                    </div>
+                </div>
+                <div class="employer-step step2">
+                    <div class="employer-step-text">
+                        <div class="employer-step-span">
+                            <span>2.</span>
+                        </div>
+                        <h2>Get Approved</h2>
+                        <p>Our team quickly reviews your job posting to ensure clarity and relevance. Once approved, your listing goes live, making it visible to students searching for opportunities.</p>
+                    </div>
+                    <div class="employer-step-image">
+                        <img src="approval-image-transparent.png" alt="Wait for Approval" />
+                    </div>
+                </div>
+                <div class="employer-step step3">
+                    <div class="employer-step-text">
+                        <div class="employer-step-span">
+                            <span>3.</span>
+                        </div>
+                        <h2>Connect & Hire</h2>
+                        <p>Browse applications, filter candidates, and connect with the best fit. Reach out to schedule interviews and finalize hiring—all within a seamless process designed for efficiency.</p>
+                    </div>
+                    <div class="employer-step-image esi-3">
+                        <img src="connect.png" alt="Find new hires" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--TESTIMONIALS-->
+    
+    <h1 class="employer-testimonials-h1">Trusted by Many</h1>
+    <div class="employer-testimonial-container">
+        <div class="employer-testimonial test-1">
+            <p>“Vocatia helped us find talented interns quickly! The process was seamless.”</p>
+            <span><p>- JRT</p></span>
+        </div>
+        <div class="employer-testimonial test-2">
+            <p>“An easy-to-use platform that connects us with skilled students fast!”</p>
+            <span><p>- Sam Pandit</p></span>
+        </div>
+        <div class="employer-testimonial test-3">
+            <p>“Vocatia made the hiring process so smooth. We connected with eager students within days!”</p>
+            <span><p>- C4C</p></span>
+        </div>
+        <h3>Trusted & Supported by</h3>
+        <div class="blur-circle circle1"></div>
+        <div class="blur-circle circle2"></div>
+        <div class="blur-circle circle3"></div>
+    </div>
+    <div class="employer-border-line"></div>
+    <div class="company-carousel">
+        <div class="carousel-track">
+            <img src="c4clogo.svg" class="company-img c1" alt="Company 1">
+            <img src="jrtlogo.png" class="company-img c2" alt="Company 2">
+            <img src="fblalogo.png" class="company-img c3" alt="Company 3">
+            <img src="VocatiaTextLogoInverted.svg" class="company-img c4" alt="Company 4">
+            <img src="amlLogo.svg" class="company-img c5" alt="Company 5">
+            
+        </div>
+    </div>
+    <div class="employer-border-line"></div>
+
+    <!--CTA-->
+
+    <section class="cta-section">
+        <div class="cta-card">
+            <h1 class="cta-heading">Ready to Find Top Talent?</h1>
+            <p class="cta-subtext">Join Vocatia today and connect with skilled students fast.</p>
+            <a href="add-job.html" class="primary-button"><span>Post Your First Job Now</span></a>
+        </div>
+    </section>
+
+    <!--FOOTER-->
+
+    <div class="footer">
+        <div class="logo-content">
+            <img src="vocatia-backdrop-fit.svg" style="
+                width: 75px;
+                height: 75px;
+                margin-right: 100px;
+                padding: 10px;
+                border-radius: 50%;
+                margin-top: 40px;
+                background-color: darkblue;
+                box-shadow:
+                  0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                  0 6px 20px 0 rgba(0, 0, 0, 0.19);
+              " />
+        </div>
+        <div style="display: flex; flex-direction: column">
+            <p><b>Pages</b></p>
+            <a href="index.html">Home</a>
+            <a href="postings.html">Postings</a>
+            <a href="how-to.html">How To</a>
+            <a href="about-us.html">About Us</a>
+        </div>
+        <div class="developed-by">
+            <p><b>Developed By</b></p>
+            <a href="about-us.html#lokesh">Lokesh Rajagopal</a>
+            <a href="about-us.html#akshar">Akshar Guntapudi</a>
+        </div>
+        <div class="top-icon"><a href="#page-start"><svg fill="#100f89" width="64px" height="64px" viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg" stroke="#100f89">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <title>ionicons-v5-b</title>
+                        <path
+                            d="M256,48C141.13,48,48,141.13,48,256s93.13,208,208,208,208-93.13,208-208S370.87,48,256,48Zm74.14,252H181.86a16,16,0,0,1-12.29-26.23l74.13-89.09a16,16,0,0,1,24.6,0l74.13,89.09A16,16,0,0,1,330.14,300Z">
+                        </path>
+                    </g>
+                </svg> </a></div>
+    </div>
+</body>
+
+</html>

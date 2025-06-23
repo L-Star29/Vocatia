@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <script type="module" src="app.js"></script>
+    <script type="module" src="jobs.js"></script>
+    <script type="module" src="admin-dashboard.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <title>Admin Dashboard - Vocatia</title>
+    <link rel="icon" type="image/svg+xml" href="vocatia-backdrop-fit.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Kaushan+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Kaushan+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- Admin Authentication Modal -->
+    <div id="admin-auth-modal" class="admin-auth-modal">
+        <div class="admin-auth-content">
+            <div class="admin-auth-header">
+                <img src="Vocatia.svg" alt="Vocatia Logo" class="admin-logo">
+                <h2>Admin Access Required</h2>
+                <p>Please enter the admin password to continue</p>
+            </div>
+            <form id="admin-auth-form" class="admin-auth-form">
+                <div class="input-group">
+                    <input type="password" id="admin-password" placeholder="Enter admin password" required>
+                    <div class="password-toggle" onclick="togglePassword()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
+                <button type="submit" class="admin-auth-button">Access Dashboard</button>
+            </form>
+            <div id="auth-error" class="auth-error" style="display: none;">
+                <p>Incorrect password. Please try again.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Admin Dashboard (Hidden until authenticated) -->
+    <div id="admin-dashboard" class="admin-dashboard" style="display: none;">
+        <!-- Header -->
+        <div class="banner">
+            <a href="index.html" class="logo-image-container">
+                <img src="Vocatia.svg" class="logo-image" />
+                <img src="VocatiaTextLogoInverted.svg" class="logo-content" />
+            </a>
+            <div class="admin-header-controls">
+                <span class="admin-welcome">Welcome, Administrator</span>
+            </div>
+        </div>
+        
+        <!-- Dashboard Title -->
+        <div class="admin-panel-main">
+            <div class="admin-panel-header">
+                <h1 class="admin-panel-title">Admin <span class="purple-special">Dashboard</span></h1>
+                <p class="admin-panel-description">Review and manage pending job postings.</p>
+            </div>
+        </div>
+
+        <!-- Dashboard Stats -->
+        <div class="admin-stats">
+            <div class="stat-card">
+                <h3>Pending Approvals</h3>
+                <p id="pending-count">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Approved Jobs</h3>
+                <p id="approved-count">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Rejected Jobs</h3>
+                <p id="rejected-count">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Total Jobs</h3>
+                <p id="total-jobs">0</p>
+            </div>
+        </div>
+
+        <!-- Job Management Tabs -->
+        <div class="admin-tabs">
+            <button class="tab-button active" data-tab="pending">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12,6 12,12 16,14"></polyline>
+                </svg>
+                Pending Jobs
+                <span class="tab-count" id="pending-tab-count">0</span>
+            </button>
+            <button class="tab-button" data-tab="approved">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 6L9 17l-5-5"></path>
+                </svg>
+                Approved Jobs
+                <span class="tab-count" id="approved-tab-count">0</span>
+            </button>
+            <button class="tab-button" data-tab="rejected">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18"></path>
+                    <path d="M6 6l12 12"></path>
+                </svg>
+                Rejected Jobs
+                <span class="tab-count" id="rejected-tab-count">0</span>
+            </button>
+        </div>
+
+        <!-- Pending Jobs Tab -->
+        <div id="pending-jobs" class="admin-tab-content active">
+            <div id="no-pending-message" class="no-jobs-message">No pending jobs.</div>
+            <div id="pending-jobs-list" class="admin-jobs-section"></div>
+        </div>
+        <!-- Approved Jobs Tab -->
+        <div id="approved-jobs" class="admin-tab-content">
+            <div id="approved-jobs-list" class="admin-jobs-section"></div>
+        </div>
+        <!-- Rejected Jobs Tab -->
+        <div id="rejected-jobs" class="admin-tab-content">
+            <div id="rejected-jobs-list" class="admin-jobs-section"></div>
+        </div>
+
+        
+    </div>
+    <!-- Job Review Modal -->
+    <div id="job-review-modal" class="job-review-modal">
+        <div class="job-review-content">
+            <div class="job-review-header">
+                <h3>Review Job Posting</h3>
+                <button id="close-review-modal" class="close-button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18"></path>
+                        <path d="M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="job-review-body">
+                <div class="job-details">
+                    <div class="detail-group">
+                        <label>Job Title:</label>
+                        <p id="review-job-title"></p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Company:</label>
+                        <p id="review-company"></p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Location:</label>
+                        <p id="review-location"></p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Job Type:</label>
+                        <p id="review-type"></p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Salary:</label>
+                        <p id="review-salary"></p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Description:</label>
+                        <p id="review-description"></p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Posted By:</label>
+                        <p id="review-employer"></p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Posted Date:</label>
+                        <p id="review-date"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="job-review-actions">
+                <button id="review-approve-btn" class="approve-button">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 6L9 17l-5-5"></path>
+                    </svg>
+                    Approve Job
+                </button>
+                <button id="review-reject-btn" class="reject-button">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18"></path>
+                        <path d="M6 6l12 12"></path>
+                    </svg>
+                    Reject Job
+                </button>
+                <button id="review-cancel-btn" class="cancel-button">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rejection Reason Modal -->
+    <div id="rejection-modal" class="rejection-modal">
+        <div class="rejection-content">
+            <div class="rejection-header">
+                <h3>Reject Job Posting</h3>
+                <button id="close-rejection-modal" class="close-button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18"></path>
+                        <path d="M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="rejection-body">
+                <p>Please provide a reason for rejecting this job posting:</p>
+                <textarea id="rejection-reason" placeholder="Enter rejection reason..." rows="4"></textarea>
+            </div>
+
+            <div class="rejection-actions">
+                <button id="confirm-rejection" class="reject-button">Confirm Rejection</button>
+                <button id="cancel-rejection" class="cancel-button">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Approval Confirmation Modal -->
+    <div id="approval-modal" class="rejection-modal">
+        <div class="rejection-content">
+            <div class="rejection-header">
+                <h3>Approve Job Posting</h3>
+                <button id="close-approval-modal" class="close-button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18"></path>
+                        <path d="M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="rejection-body">
+                <p>Are you sure you want to approve this job posting?</p>
+            </div>
+            <div class="rejection-actions">
+                <button id="confirm-approval" class="approve-button">Confirm Approval</button>
+                <button id="cancel-approval" class="cancel-button">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success/Error Messages -->
+    <div id="admin-popup-message" class="popup-message" style="display: none;">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3 id="admin-popup-title">Success</h3>
+                <button id="admin-close-popup" class="close-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18"></path>
+                        <path d="M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="popup-body">
+                <p id="admin-popup-text"></p>
+            </div>
+            <div class="popup-actions">
+                <button id="admin-ok-popup" class="primary-button">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Job Detail Modal -->
+    <div id="job-detail-modal" class="job-review-modal">
+        <div class="job-review-content">
+            <div class="job-review-header">
+                <h3>Job Details</h3>
+                <button id="close-job-detail-modal" class="close-button">
+                    &times;
+                </button>
+            </div>
+            <div class="job-review-body">
+                <div class="job-details">
+                    <div class="detail-group">
+                        <label>Job Title:</label>
+                        <p id="job-detail-title"></p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Company:</label>
+                        <p id="job-detail-company"></p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Location:</label>
+                        <p id="job-detail-location"></p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Job Type:</label>
+                        <p id="job-detail-type"></p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Salary:</label>
+                        <p id="job-detail-salary"></p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Description:</label>
+                        <p id="job-detail-description"></p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Posted Date:</label>
+                        <p id="job-detail-date"></p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Status:</label>
+                        <p id="job-detail-status"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

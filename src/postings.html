@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <script type="module" src="app.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <title>Vocatia</title>
+    <link rel="icon" type="image/svg+xml" href="vocatia-backdrop-fit.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Kaushan+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Kaushan+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="banner">
+        <a href="index.html" class="logo-image-container">
+            <img src="Vocatia.svg" class="logo-image" />
+            <img src="VocatiaTextLogoInverted.svg" class="logo-content" />
+        </a>
+        <a onclick="showFullMenu()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="menu-alt"
+                class="menu-icon" fill="#000000">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <path d="M21,19H3a1,1,0,0,1,0-2H21a1,1,0,0,1,0,2Z" style="fill:#FFFFFF"></path>
+                    <path d="M21,13H3a1,1,0,0,1,0-2H21a1,1,0,0,1,0,2Z" style="fill:#FFFFFF"></path>
+                    <path d="M21,7H3A1,1,0,0,1,3,5H21a1,1,0,0,1,0,2Z" style="fill:#FFFFFF"></path>
+                </g>
+            </svg></a>
+        <div class="link-group" id="the links">
+            <a href="index.html">
+                <p class="bannerp">Home</p>
+            </a>
+            <a href="postings.html">
+                <p class="bannerp">Postings</p>
+            </a>
+            <a href="how-to.html">
+                <p class="bannerp">How To</p>
+            </a>
+            <a href="about-us.html">
+                <p class="bannerp">About Us</p>
+            </a>
+
+            <a href="login.html">
+                <button class="secondary-button log-in-button">
+                    Log In
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <div class="title" id="postings-title">
+        <div class="title-container" id="postings-title-container">
+        </div>
+        <h1 class="title-h1" id="postings-title-h1">Postin<span class="blue-special">g</span>s</h1>
+    </div>
+
+    <div class="border-line" id="postings-title-border"></div>
+
+    <div class="job-search">
+        <div class="job-search-container">
+            <div class="input-wrapper">
+                <div class="input">
+                    <div class="glow left"></div>
+                    <div class="glow right"></div>
+
+                    <input id="job-title" type="text" name="text" placeholder="Job Title..." />
+
+                    <div class="reflection"></div>
+
+                    <div class="icon">
+                        <svg stroke="#fff" viewBox="0 0 38 38" height="1em" width="1em"
+                            xmlns="http://www.w3.org/2000/svg" class="loading">
+                            <g fill-rule="evenodd" fill="none">
+                                <g stroke-width="3" transform="translate(1 1)">
+                                    <circle r="18" cy="18" cx="18" stroke-opacity=".2"></circle>
+                                    <path d="M36 18c0-9.94-8.06-18-18-18"></path>
+                                </g>
+                            </g>
+                        </svg>
+
+                        <svg viewBox="0 0 490.4 490.4" version="1.1" width="1em" height="1em" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg" class="magnifier">
+                            <path
+                                d="M484.1,454.796l-110.5-110.6c29.8-36.3,47.6-82.8,47.6-133.4c0-116.3-94.3-210.6-210.6-210.6S0,94.496,0,210.796   s94.3,210.6,210.6,210.6c50.8,0,97.4-18,133.8-48l110.5,110.5c12.9,11.8,25,4.2,29.2,0C492.5,475.596,492.5,463.096,484.1,454.796z    M41.1,210.796c0-93.6,75.9-169.5,169.5-169.5s169.6,75.9,169.6,169.5s-75.9,169.5-169.5,169.5S41.1,304.396,41.1,210.796z">
+                            </path>
+                        </svg>
+                    </div>
+
+                    <a href="#postings-filter">
+                        <button class="filter" href="#postings-filter">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                                    stroke-width="2" fill="none" stroke="currentColor">
+                                    <path
+                                        d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
+                                        stroke-linejoin="round" stroke-linecap="round"></path>
+                                </svg>
+                            </span>
+                        </button>
+                    </a>
+                </div>
+                <div class="glow-outline"></div>
+                <div class="glow-layer-bg"></div>
+                <div class="glow-layer-1"></div>
+                <div class="glow-layer-2"></div>
+                <div class="glow-layer-3"></div>
+                <div class="glow left"></div>
+                <div class="glow right"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="postings-main">
+        <div class="postings-filter" id="postings-filter">
+            <button class="clear-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2"
+                    fill="none" stroke="currentColor">
+                    <path
+                        d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
+                        stroke-linejoin="round" stroke-linecap="round"></path>
+                </svg>
+                <span>Reset Filters</span>
+            </button>
+            <h2 class="heading">Filter:</h2>
+
+            <div class="input-field">
+                <select required name="type" id="job-type">
+                    <option value="">Job Type</option>
+                    <option value="full-time">Full-time</option>
+                    <option value="part-time">Part-time</option>
+                    <option value="internship">Internship</option>
+                    <option value="seasonal">Seasonal</option>
+                    <option value="volunteer">Volunteer</option>
+                </select>
+            </div>
+            <div class="input-field">
+                <select required name="type" id="experience-level">
+                    <option value="">Experience Level</option>
+                    <option value="entry-level">Entry Level</option>
+                    <option value="mid-level">Mid-level</option>
+                    <option value="senior-level">Senior Level</option>
+                </select>
+            </div>
+            <div class="input-field">
+                <select required name="type" id="work-type">
+                    <option value="">Work Type</option>
+                    <option value="in-person">In-person</option>
+                    <option value="remote">Remote</option>
+                </select>
+            </div>
+            <div class="input-field">
+                <input required autocomplete="off" type="number" name="salary" id="salary"
+                    placeholder="Minimum Salary" />
+            </div>
+        </div>
+
+        <div class="job-main-container">
+            <div class="job-container" id="job-list">
+                <!--Jobs will be injected here-->
+            </div>
+            <div class="job-detail-container">
+                <div class="job-header">
+                  <div class="job-header-left">
+                    <div>
+                      <h2>Volunteer Coordinator</h2>
+                      <h3>San Francisco, CA</h3>
+                    </div>
+                  </div>
+                  <div class="job-apply">
+                    <button class="clear-button">Apply Now</button>
+                  </div>
+                </div>
+            
+                <div class="job-stats">
+                  <div class="job-stat">
+                    <h3>Experience Level</h3>
+                    <h2>Entry Level</h2>
+                  </div>
+                  <div class="job-stat">
+                    <h3>Job Type</h3>
+                    <h2>Full-Time</h2>
+                  </div>
+                  <div class="job-stat">
+                    <h3>Work Type</h3>
+                    <h2>In-person</h2>
+                  </div>
+                  <div class="job-stat">
+                    <h3>Annual Salary</h3>
+                    <h2>$78,000</h2>
+                  </div>
+                </div>
+            
+                <div class="job-content">
+                    <div class="job-about">
+                        <h2>About the Job</h2>
+                        <p>EcoEats wants your enthusiasm! As our Volunteer Coordinator, you'll lead volunteer initiatives, organize events, and foster a community dedicated to reducing food waste. Your role is to turn passion into action, connecting hearts for a shared mission. Join us in orchestrating impactful volunteer experiences and driving positive change!</p>
+                
+                        <h2>Job Roles + Responsibilities</h2>
+                        <ul>
+                            <li>Recruit, train, and manage volunteers</li>
+                            <li>Organize and lead volunteer events and activities</li>
+                            <li>Develop volunteer schedules and assignments</li>
+                            <li>Maintain volunteer records and reports</li>
+                            <li>Collaborate with other departments to meet volunteer needs</li>
+                        </ul>
+                    </div>
+                
+                    <div class="job-preq-benefits">
+                        <div class="job-prerequisites">
+                            <h2>Prerequisites</h2>
+                            <ul>
+                                <li>Passion for environmental sustainability</li>
+                                <li>Strong organizational and communication skills</li>
+                                <li>Ability to work independently and as part of a team</li>
+                                <li>Experience in volunteer management or community outreach is a plus</li>
+                            </ul>
+                        </div>
+                        <div class="job-benefits">
+                            <h2>Eligibility</h2>
+                            <ul>
+                                <li>Recruit, train, and manage volunteers</li>
+                                <li>Organize and lead volunteer events and activities</li>
+                                <li>Develop volunteer schedules and assignments</li>
+                                <li>Maintain volunteer records and reports</li>
+                                <li>Collaborate with other departments to meet volunteer needs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+        <script type="module" src="jobs.js"></script>
+
+        <!--<a class="anchor" id="postings-filter"></a>
+        <div class="postings-filter">
+            <div class="filter-top">
+                <h2>Filter</h2>
+                    <button class="clear-button">
+                        <span>Clear</span>
+                    </button>
+            </div>
+
+            // Salary Filter
+            <form id="salary-form" class="filter-form">
+                <h4>Salary (per hour)</h4>
+                <div class="radio-input-wrapper">
+                    <label class="label">
+                        <input value="Under15" name="salary-radio" id="Under15" class="radio-input" type="checkbox">
+                        <div class="radio-design"></div>
+                        <div class="label-text">Under $15</div>
+                    </label>
+                    <label class="label">
+                        <input value="15-18" name="salary-radio" id="15-18" class="radio-input" type="checkbox">
+                        <div class="radio-design"></div>
+                        <div class="label-text">$15 - $18</div>
+                    </label>
+                    <label class="label">
+                        <input value="18+" name="salary-radio" id="18+" class="radio-input" type="checkbox">
+                        <div class="radio-design"></div>
+                        <div class="label-text">$18+</div>
+                    </label>
+                </div>
+            </form>
+
+            Job Category Filter
+            <form id="field-form" class="filter-form">
+                <h4>Job Category</h4>
+                <div class="radio-input-wrapper">
+                    <label class="label">
+                        <input value="Retail" name="field-radio" id="Retail" class="radio-input" type="checkbox">
+                        <div class="radio-design"></div>
+                        <div class="label-text">Retail</div>
+                    </label>
+                    <label class="label">
+                        <input value="FoodService" name="field-radio" id="FoodService" class="radio-input" type="checkbox">
+                        <div class="radio-design"></div>
+                        <div class="label-text">Food Service</div>
+                    </label>
+                    <label class="label">
+                        <input value="Tutoring" name="field-radio" id="Tutoring" class="radio-input" type="checkbox">
+                        <div class="radio-design"></div>
+                        <div class="label-text">Tutoring</div>
+                    </label>
+                    <label class="label">
+                        <input value="SocialMedia" name="field-radio" id="SocialMedia" class="radio-input" type="checkbox">
+                        <div class="radio-design"></div>
+                        <div class="label-text">Social Media</div>
+                    </label>
+                    <label class="label">
+                        <input value="Events" name="field-radio" id="Events" class="radio-input" type="checkbox">
+                        <div class="radio-design"></div>
+                        <div class="label-text">Events</div>
+                    </label>
+                    <label class="label">
+                        <input value="PetCare" name="field-radio" id="PetCare" class="radio-input" type="checkbox">
+                        <div class="radio-design"></div>
+                        <div class="label-text">Pet Care</div>
+                    </label>
+                </div>
+            </form>
+
+            Job Type Filter
+            <form id="job-type-form" class="filter-form">
+                <h4>Job Type</h4>
+                <div class="radio-input-wrapper">
+                    <label class="label">
+                        <input value="Part-time" name="jobtype-radio" id="Part-time" class="radio-input" type="checkbox">
+                        <div class="radio-design"></div>
+                        <div class="label-text">Part-time</div>
+                    </label>
+                    <label class="label">
+                        <input value="Flexible" name="jobtype-radio" id="Flexible" class="radio-input" type="checkbox">
+                        <div class="radio-design"></div>
+                        <div class="label-text">Flexible</div>
+                    </label>
+                    <label class="label">
+                        <input value="Remote" name="jobtype-radio" id="Remote" class="radio-input" type="checkbox">
+                        <div class="radio-design"></div>
+                        <div class="label-text">Remote</div>
+                    </label>
+                </div>
+            </form>
+
+            <button class="apply-button" id="filter-apply">Apply Filters</button>
+        </div>
+
+
+        <div class="trending-jobs">
+            <div class="jobs-top">
+                <div class="jobs-count">9 results</div>
+                <div class="jobs-add" style="display: none;">
+                    <a id="jobButton" href="postings.html">
+                        <button class="apply-button">
+                            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                <path
+                                    d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+                                    fill="currentColor"></path>
+                            </svg>
+                            <span id="jobButtonText">Apply Now</span>
+                        </button>
+                    </a>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            const userRole = localStorage.getItem("userRole"); // Retrieve user role from local storage
+                            const jobButton = document.getElementById("jobButton");
+                            const jobButtonText = document.getElementById("jobButtonText");
+
+                            if (userRole === "employer") {
+                                jobButton.setAttribute("href", "add-job.html"); // Change link for employer
+                                jobButtonText.textContent = "Add Job"; // Change button text for employer
+                            }
+                        });
+                    </script>
+                </div>
+
+            </div>
+            <div class="job-container" id="job-list">
+                Jobs will be injected here
+            </div>
+
+        
+
+            <div id="pagination" class="pagination-controls">
+                <button id="prev-page" class="secondary-button">Previous</button>
+                <button id="next-page" class="secondary-button">Next</button>
+            </div>
+            
+            <script type="module" src="jobs.js"></script>
+        </div>-->
+    </div>
+
+    <div class="footer">
+        <div class="logo-content">
+            <img src="vocatia-backdrop-fit.svg" style="
+                width: 75px;
+                height: 75px;
+                margin-right: 100px;
+                padding: 10px;
+                border-radius: 50%;
+                margin-top: 40px;
+                background-color: darkblue;
+                box-shadow:
+                  0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                  0 6px 20px 0 rgba(0, 0, 0, 0.19);
+              " />
+        </div>
+        <div style="display: flex; flex-direction: column">
+            <p><b>Pages</b></p>
+            <a href="index.html">Home</a>
+            <a href="postings.html">Postings</a>
+            <a href="how-to.html">How To</a>
+            <a href="about-us.html">About Us</a>
+        </div>
+        <div class="developed-by">
+            <p><b>Developed By</b></p>
+            <a href="about-us.html#lokesh">Lokesh Rajagopal</a>
+            <a href="about-us.html#akshar">Akshar Guntapudi</a>
+        </div>
+        <div class="top-icon"><a href="#page-start"><svg fill="#100f89" width="64px" height="64px" viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg" stroke="#100f89">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <title>ionicons-v5-b</title>
+                        <path
+                            d="M256,48C141.13,48,48,141.13,48,256s93.13,208,208,208,208-93.13,208-208S370.87,48,256,48Zm74.14,252H181.86a16,16,0,0,1-12.29-26.23l74.13-89.09a16,16,0,0,1,24.6,0l74.13,89.09A16,16,0,0,1,330.14,300Z">
+                        </path>
+                    </g>
+                </svg> </a></div>
+    </div>
+
+    <div id="popup-message" style="display: none;">
+        <div class="popup-content">
+            <button class="popup-close" aria-label="Close popup">&times;</button>
+            <p id="popup-text"></p>
+            <button class="popup-ok">OK</button>
+        </div>
+    </div>
+
+    <div id="confirm-popup" style="display: none;">
+        <div class="popup-content">
+            <button class="popup-close" id="confirm-close">&times;</button>
+            <div id="confirm-text">Are you sure you want to apply for this job?</div>
+            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                <button id="confirm-no" class="popup-ok" style="background: gray;">Cancel</button>
+                <button id="confirm-yes" class="popup-ok">Yes</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>

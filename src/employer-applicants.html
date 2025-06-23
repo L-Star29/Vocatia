@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <script type="module" src="app.js"></script>
+    <script type="module" src="jobs.js"></script>
+    <script type="module" src="dashboard.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <title>Vocatia</title>
+    <link rel="icon" type="image/svg+xml" href="vocatia-backdrop-fit.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Kaushan+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Kaushan+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body class="employer-dashboard">
+
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <a href="employer_index.html" class="sidebar-logo">
+                <img src="Vocatia.svg" alt="Vocatia Logo" class="sidebar-logo-image">
+                <img src="VocatiaTextLogoInverted.svg" alt="Vocatia Text Logo" class="sidebar-logo-image sidebar-logo-text">
+            </a>
+        </div>
+        <div class="sidebar-menu">
+            <a href="employer-dashboard.html" class="sidebar-item">🏠 Dashboard</a>
+            <a href="employer-postings.html" class="sidebar-item">📌 Job Postings</a>
+            <a href="employer-applicants.html" class="sidebar-item">👥 Applicants</a>
+            <a href="how-to.html" class="sidebar-item">❓ Help</a>
+        </div>
+        <div class="sidebar-footer">
+            <button class="logout-button" onclick="logout()">Log Out</button>
+        </div>
+    </div>
+    
+
+    <div id="applicants-section">
+        <h2>📋 Job Applicants</h2>
+    </div>
+    
+    <script type="module" src="employer-applicants.js"></script>
+
+    <div class="right-sidebar">
+        <h2>🔔 Notifications</h2>
+        <ul id="notifications">
+            <li>Loading...</li>
+        </ul>
+        <h2>📊 Job Insights</h2>
+        <p>Job views & application trends</p>
+        <div class="stats">
+            <p>👀 Views: <span id="job-views">0</span></p>
+            <p>📩 Applications: <span id="job-applications">0</span></p>
+        </div>
+    </div>
+    
+</body>
+
+</html>
