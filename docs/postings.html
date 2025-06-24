@@ -127,7 +127,7 @@
 
     <div class="postings-main">
         <div class="postings-filter" id="postings-filter">
-            <button class="clear-button">
+            <button class="clear-button" id="reset-filters">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2"
                     fill="none" stroke="currentColor">
                     <path
@@ -136,36 +136,39 @@
                 </svg>
                 <span>Reset Filters</span>
             </button>
-            <h2 class="heading">Filter:</h2>
 
-            <div class="input-field">
-                <select required name="type" id="job-type">
-                    <option value="">Job Type</option>
-                    <option value="full-time">Full-time</option>
-                    <option value="part-time">Part-time</option>
-                    <option value="internship">Internship</option>
-                    <option value="seasonal">Seasonal</option>
-                    <option value="volunteer">Volunteer</option>
-                </select>
-            </div>
-            <div class="input-field">
-                <select required name="type" id="experience-level">
-                    <option value="">Experience Level</option>
-                    <option value="entry-level">Entry Level</option>
-                    <option value="mid-level">Mid-level</option>
-                    <option value="senior-level">Senior Level</option>
-                </select>
-            </div>
-            <div class="input-field">
-                <select required name="type" id="work-type">
-                    <option value="">Work Type</option>
-                    <option value="in-person">In-person</option>
-                    <option value="remote">Remote</option>
-                </select>
-            </div>
-            <div class="input-field">
-                <input required autocomplete="off" type="number" name="salary" id="salary"
-                    placeholder="Minimum Salary" />
+            <div class="spacer"></div>
+
+            <div class="filter-btn-group">
+                <div class="input-field">
+                    <select required name="type" id="job-type">
+                        <option value="">Job Type</option>
+                        <option value="full-time">Full-time</option>
+                        <option value="part-time">Part-time</option>
+                        <option value="internship">Internship</option>
+                        <option value="seasonal">Seasonal</option>
+                        <option value="volunteer">Volunteer</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <select required name="type" id="experience-level">
+                        <option value="">Experience Level</option>
+                        <option value="entry-level">Entry Level</option>
+                        <option value="mid-level">Mid-level</option>
+                        <option value="senior-level">Senior Level</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <select required name="type" id="work-type">
+                        <option value="">Work Type</option>
+                        <option value="in-person">In-person</option>
+                        <option value="remote">Remote</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <input required autocomplete="off" type="number" name="salary" id="salary"
+                        placeholder="Minimum Salary" />
+                </div>
             </div>
         </div>
 
@@ -242,8 +245,9 @@
                         </div>
                     </div>
                 </div>
-              </div>
+            </div>
         </div>
+        <div class="black-gradient"></div>
         <script type="module" src="jobs.js"></script>
 
         <!--<a class="anchor" id="postings-filter"></a>

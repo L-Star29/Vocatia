@@ -30,7 +30,9 @@ function getNumericSalary(salary) {
 
 let currentPage = 1;
 const jobsPerPage = 12;
-let allJobs = []; // Stores all fetched jobs
+let allJobs = [];
+let selectedJobId = null;
+
 
 // POP-UP FUNCTIONALITY
 document.addEventListener("DOMContentLoaded", () => {
@@ -127,13 +129,13 @@ async function fetchJobs() {
   renderJobs();
 }
 
-function renderJobs() {
+function renderJobs(jobListToRender = allJobs) {
   const jobList = document.getElementById("job-list");
   const pagination = document.getElementById("pagination");
 
   const start = (currentPage - 1) * jobsPerPage;
   const end = start + jobsPerPage;
-  const currentJobs = allJobs.slice(start, end);
+  const currentJobs = jobListToRender.slice(start, end);
 
   jobList.innerHTML = "";
 
@@ -143,24 +145,18 @@ function renderJobs() {
     return;
   }
 
-  currentJobs.forEach((job) => {
+  currentJobs.forEach((job, index) => {
     const jobElement = document.createElement("div");
     jobElement.classList.add("job-card");
 
-    let salaryHTML = 'Not specified';
-    if (job.salary) {
-        let salaryValue = String(job.salary);
-        if (salaryValue.includes('/')) {
-            const parts = salaryValue.split('/');
-            salaryHTML = `<strong>${parts[0]}</strong>/${parts.slice(1).join('/')}`;
-        } else {
-            if (!salaryValue.startsWith('$')) {
-                salaryValue = '$' + salaryValue;
-            }
-            salaryHTML = `<strong>${salaryValue}</strong>/hour`;
-        }
+    const shouldSelect = selectedJobId === job.id || (!selectedJobId && currentPage === 1 && index === 0);
+    if (shouldSelect) {
+      jobElement.classList.add("selected");
+      selectedJobId = job.id;
+      renderJobDetail(job);
     }
 
+  
     jobElement.innerHTML = `
       <div class="job-title">${job.title}</div>
       <div class="job-company"><strong>Company:</strong> ${job.company}</div>
@@ -171,11 +167,23 @@ function renderJobs() {
         <button class="white-button">${job.experienceLevel}</button>
         <button class="white-button">${job.workType}</button>
       </div>
-      <div class="job-salary">${salaryHTML}</div>
-
+      <div class="job-salary"><div><strong>$${job.salary}</strong>/hour</div> <div class="small-font">Closes on: ${job.expiryDate}</div></div>
     `;
+  
+    // Add click listener to select and render job details
+    jobElement.addEventListener("click", () => {
+      // Update selection tracking
+      selectedJobId = job.id;
+    
+      // Re-render to update selection styles
+      renderJobs();
+    });
+    
+  
     jobList.appendChild(jobElement);
   });
+  
+
 
   // Calculate pagination width dynamically:
   if (pagination && jobList) {
@@ -210,6 +218,55 @@ function renderJobs() {
 
   addPaginationControls();
 }
+
+function renderJobDetail(job) {
+  const detailContainer = document.querySelector(".job-detail-container");
+  if (!detailContainer || !job) return;
+
+  // Header section
+  detailContainer.querySelector(".job-header h2").textContent = job.title || "";
+  detailContainer.querySelector(".job-header h3").textContent = job.location || "";
+
+  // Stats section
+  const stats = detailContainer.querySelectorAll(".job-stat");
+  if (stats.length >= 4) {
+    stats[0].querySelector("h2").textContent = job.experienceLevel || "";
+    stats[1].querySelector("h2").textContent = job.jobType || "";
+    stats[2].querySelector("h2").textContent = job.workType || "";
+    stats[3].querySelector("h2").textContent = job.salary || "";
+  }
+
+  // About section
+  detailContainer.querySelector(".job-about p").textContent = job.jobDescription || "";
+
+  // Responsibilities
+  const responsibilitiesList = detailContainer.querySelector(".job-about ul");
+  responsibilitiesList.innerHTML = "";
+  (job.responsibilities || []).forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    responsibilitiesList.appendChild(li);
+  });
+
+  // Qualifications → Prerequisites
+  const qualificationsList = detailContainer.querySelector(".job-prerequisites ul");
+  qualificationsList.innerHTML = "";
+  (job.qualifications || []).forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    qualificationsList.appendChild(li);
+  });
+
+  // Benefits → Eligibility box
+  const benefitsList = detailContainer.querySelector(".job-benefits ul");
+  benefitsList.innerHTML = "";
+  (job.benefits || []).forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    benefitsList.appendChild(li);
+  });
+}
+
 
 function handleApplyClick(event) {
   const jobId = event.target.getAttribute("data-job-id");
@@ -282,50 +339,21 @@ async function applyForJob(jobId) {
 
 
 // Search function
-async function searchJobs() {
+function searchJobs() {
   const searchInput = document.getElementById("job-title").value.toLowerCase();
-  const querySnapshot = await getDocs(jobsCollection);
-  const jobList = document.getElementById("job-list");
 
-  jobList.innerHTML = "";
+  // Filter from original list
+  const filtered = allJobs.filter(job =>
+    job.title.toLowerCase().includes(searchInput)
+  );
 
-  querySnapshot.forEach((doc) => {
-    const job = doc.data();
+  // Update selected job id to first match
+  selectedJobId = filtered.length > 0 ? filtered[0].id : null;
 
-    if (job.title.toLowerCase().includes(searchInput)) {
-      const jobElement = document.createElement("div");
-      jobElement.classList.add("job-card");
-
-      jobElement.innerHTML = `
-            <div class="job-title">${job.title}</div>
-            <div class="job-company"><strong>Company:</strong> ${job.company}</div>
-            <div class="job-location"><strong>Location:</strong> ${job.location}</div>
-            <div class="job-salary"><strong>Salary:</strong> ${job.salary}</div>
-            <p>${job.description}</p>
-            <button class="primary-button apply-button">Apply Now</button>
-          `;
-
-      jobList.appendChild(jobElement);
-    }
-  });
-
-  if (jobList.innerHTML === "") {
-    jobList.innerHTML = "<p>No jobs found.</p>";
-  }
-
-  document.querySelectorAll(".apply-button").forEach((button) => {
-    button.addEventListener("click", async (event) => {
-      const jobId = event.target.getAttribute("data-job-id");
-
-      // Ask for user confirmation before applying
-      const userConfirmed = window.confirm("Are you sure you want to apply for this job?");
-      
-      if (userConfirmed) {
-        await applyForJob(jobId);
-      }
-    });
-  });
+  // Render jobs from filtered list
+  renderJobs(filtered);
 }
+
 
 // Filter function
 async function filterJobs() {
@@ -421,7 +449,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Search input
   const searchInput = document.getElementById("job-title");
   if (searchInput) {
-    searchInput.addEventListener("input", filterJobs);
+    searchInput.addEventListener("input", searchJobs);
   }
 
   // Filter checkboxes

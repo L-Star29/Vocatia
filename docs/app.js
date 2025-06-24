@@ -101,8 +101,8 @@ onAuthStateChanged(auth, (user) => {
 document.addEventListener("DOMContentLoaded", () => {
   const popup = document.getElementById("popup-message");
   const popupText = document.getElementById("popup-text");
-  let closeBtn = document.getElementById("close-popup");
-  let okBtn = document.getElementById("ok-popup");
+  let closeBtn = document.getElementById("popup-close");
+  let okBtn = document.getElementById("popup-ok");
   if (popup && popupText && closeBtn && okBtn) {
     closeBtn.addEventListener("click", closePopup);
     okBtn.addEventListener("click", closePopup);
@@ -122,6 +122,31 @@ document.addEventListener("DOMContentLoaded", () => {
   if (okBtn) okBtn.addEventListener("click", closePopup);
 
   // For testing: showPopup("Hello world!");
+});
+
+function showPopup(message) {
+  const popup = document.getElementById("popup-message");
+  const popupText = document.getElementById("popup-text");
+
+  if (popup && popupText) {
+    popupText.textContent = message;
+    popup.style.display = "flex";
+  }
+}
+
+function closePopup() {
+  const popup = document.getElementById("popup-message");
+  if (popup) {
+    popup.style.display = "none";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const closeBtn = document.querySelector(".popup-close");
+  const okBtn = document.querySelector(".popup-ok");
+
+  if (closeBtn) closeBtn.addEventListener("click", closePopup);
+  if (okBtn) okBtn.addEventListener("click", closePopup);
 });
 
 
