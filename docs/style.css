@@ -1420,22 +1420,20 @@ figcaption .caption-title {
 }
 .vision {
   display: flex;
+  gap: 40px;
+  align-items: center;
   padding-right: 100px;
   padding-left: 100px;
+  padding-bottom: 50px;
   background-color: black;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: white;
+  margin-top: 50px;
 }
 
 .vision img {
   width: 25%;
-}
-
-.vision svg {
-  width: 230px;
-  position: relative;
-  top: 115px;
-  fill: #156082;
+  margin-left: -30px;
 }
 
 .visionText h2 {
@@ -1448,6 +1446,7 @@ figcaption .caption-title {
 
 .mission {
   display: flex;
+  gap: 20px;
   padding-right: 100px;
   padding-left: 100px;
   padding-bottom: 50px;
