@@ -7,8 +7,8 @@
     <script src="script.js"></script>
     <script type="module" src="app.js"></script>
     <script type="module" src="jobs.js"></script>
-    <link href="log-in.css" rel="stylesheet" type="text/css" />
-    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <link href="add-job.css" rel="stylesheet" type="text/css" />
     <title>Vocatia</title>
     <link rel="icon" type="image/svg+xml" href="vocatia-backdrop-fit.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,31 +62,198 @@
         </div>
     </div>
 
-    <div class="form-container profile-completion-form">
-        <p class="login-form-header">Profile Completion</p>
-        <form class="form">
-            <div class="input-group">
-                <label for="bio">Bio</label>
-                <textarea id="bio" name="bio" placeholder="Who are you?" required></textarea>
-            </div>
+    <!--ADD JOB MAIN-->
+    <div class="add-job-main">
+        <div class="add-job-header">
+            <h1 class="add-job-title">Profile <span class="blue-special">Completion</span></h1>
+            <p class="add-job-description">Fill out the form below to complete your profile as a student.</p>
+        </div>
 
-            <div class="input-group">
-                <label for="education">Education Level</label>
-                <input type="text" id="education" name="education" placeholder="e.g., High School, Bachelor's" required>
+        <div class="pdf-upload-section" id="pdf-upload-section">
+            <div class="upload-area" id="upload-area">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="upload-icon">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <path
+                        d="M12 10V16M12 10L10 12M12 10L14 12M12.0627 6.06274L11.9373 5.93726C11.5914 5.59135 11.4184 5.4184 11.2166 5.29472C11.0376 5.18506 10.8425 5.10425 10.6385 5.05526C10.4083 5 10.1637 5 9.67452 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V15.8C3 16.9201 3 17.4802 3.21799 17.908C3.40973 18.2843 3.71569 18.5903 4.09202 18.782C4.51984 19 5.07989 19 6.2 19H17.8C18.9201 19 19.4802 19 19.908 18.782C20.2843 18.5903 20.5903 18.2843 20.782 17.908C21 17.4802 21 16.9201 21 15.8V10.2C21 9.0799 21 8.51984 20.782 8.09202C20.5903 7.71569 20.2843 7.40973 19.908 7.21799C19.4802 7 18.9201 7 17.8 7H14.3255C13.8363 7 13.5917 7 13.3615 6.94474C13.1575 6.89575 12.9624 6.81494 12.7834 6.70528C12.5816 6.5816 12.4086 6.40865 12.0627 6.06274Z"
+                        stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </g>
+            </svg>
+                <div class="upload-text">
+                    <p class="upload-title">Upload your resume</p>
+                    <p class="upload-subtitle">Drag and drop your PDF file here, or <span class="upload-link" id="upload-link">browse files</span></p>
+                </div>
+                <input type="file" id="pdf-upload" accept=".pdf" style="display: none;" />
             </div>
-            
-            <div class="input-group">
-                <label for="skills">Skills</label>
-                <textarea id="skills" name="skills" placeholder="List your skills here" required></textarea>
+            <div class="file-info" id="file-info" style="display: none;">
+                <div class="file-details">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="file-icon">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <polyline points="14,2 14,8 20,8" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></line>
+                        <line x1="16" y1="17" x2="8" y2="17" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></line>
+                        <polyline points="10,9 9,9 8,9" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                    </svg>
+                    <div class="file-text">
+                        <p class="file-name" id="file-name"></p>
+                        <p class="file-size" id="file-size"></p>
+                    </div>
+                </div>
+                <button class="remove-file" id="remove-file">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </button>
             </div>
+        </div>
 
-            <div class="input-group">
-                <label for="work-experience">Prior Experience (Optional)</label>
-                <textarea id="work-experience" name="work-experience" placeholder="List your prior experience here" required></textarea>
-            </div>
+        <div class="container">
+            <form id="student-profile-form" class="form">
+                <div class="new-job-form">
+                    <div class="form-section-header">
+                        <h2 class="heading">Basic information</h2>
+                        <p class="add-job-description">Please enter basic information about yourself.</p>
+                    </div>
 
-            <button class="profile-completion" type="submit">Save Profile</button>
-        </form>
+                    <div class="form-input-section">
+                        <div class="input-field">
+                            <label for="bio">Bio:</label>
+                            <textarea required autocomplete="off" name="bio" id="bio"
+                                placeholder="Description"></textarea>
+                        </div>
+                        <div class="input-field">
+                            <label for="contact">Contact Information:</label>
+                            <input required autocomplete="off" type="text" name="contact" id="contact"
+                                placeholder="e.g. 888-111-1234" />
+                        </div>
+                        <div class="input-field">
+                            <label for="age">Age:</label>
+                            <input required autocomplete="off" type="number" name="age" id="age"
+                                placeholder="e.g. 16" />
+                        </div>
+                        <div class="input-field">
+                            <label for="gpa">GPA (Optional):</label>
+                            <input autocomplete="off" type="text" name="gpa" id="gpa"
+                                placeholder="e.g. 3.64" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="new-job-form">
+                    <div class="form-section-header">
+                        <h2 class="heading">Education</h2>
+                        <p class="add-job-description">Please enter information regarding your education.</p>
+                    </div>
+
+                    <div class="form-input-section">
+
+                        <div class="input-field">
+                            <label for="school-name">School Name:</label>
+                            <input required autocomplete="off" type="text" name="school-name" id="school-name"
+                                placeholder="e.g. Grand Master High School" />
+                        </div>
+                        <div class="input-field">
+                            <label for="graduation-year">Graduation Year:</label>
+                            <input required autocomplete="off" type="text" name="graduation-year" id="graduation-year"
+                                placeholder="e.g. 2027" />
+                        </div>
+                        <div class="input-field">
+                            <label for="grade">Current Grade:</label>
+                            <select required name="type" id="grade">
+                                <option value="" disabled selected>Select your current grade</option>
+                                <option value="9th">9th</option>
+                                <option value="10th">10th</option>
+                                <option value="11th">11th</option>
+                                <option value="12th">12th</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="new-job-form">
+                    <div class="form-section-header">
+                        <h2 class="heading">Experience and Skills</h2>
+                        <p class="add-job-description">Please enter information regarding prior experience and skills.</p>
+                    </div>
+
+                    <div class="form-input-section">
+
+                        <div class="input-field">
+                            <label for="skills">Skills:</label>
+                            <textarea required autocomplete="off" name="skills" id="skills"
+                                placeholder="Description"></textarea>
+                        </div>
+                        <div class="input-field">
+                            <label for="experience">Prior Experience:</label>
+                            <textarea required autocomplete="off" name="experience" id="experience"
+                                placeholder="Description"></textarea>
+                        </div>
+                        <div class="input-field">
+                            <label for="additional-info">Additional Info:</label>
+                            <textarea required autocomplete="off" name="additional-info" id="additional-info"
+                                placeholder="Description"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-container">
+                    <button type="submit" class="secondary-button">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--FOOTER-->
+
+    <div class="footer">
+        <div class="logo-content">
+            <img src="vocatia-backdrop-fit.svg" style="
+                width: 75px;
+                height: 75px;
+                margin-right: 100px;
+                padding: 10px;
+                border-radius: 50%;
+                margin-top: 40px;
+                background-color: darkblue;
+                box-shadow:
+                  0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                  0 6px 20px 0 rgba(0, 0, 0, 0.19);
+              " />
+        </div>
+        <div style="display: flex; flex-direction: column">
+            <p><b>Pages</b></p>
+            <a href="index.html">Home</a>
+            <a href="postings.html">Postings</a>
+            <a href="how-to.html">How To</a>
+            <a href="about-us.html">About Us</a>
+        </div>
+        <div class="developed-by">
+            <p><b>Developed By</b></p>
+            <a href="about-us.html#lokesh">Lokesh Rajagopal</a>
+            <a href="about-us.html#akshar">Akshar Guntapudi</a>
+        </div>
+        <div class="top-icon"><a href="#page-start"><svg fill="#100f89" width="64px" height="64px" viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg" stroke="#100f89">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <title>ionicons-v5-b</title>
+                        <path
+                            d="M256,48C141.13,48,48,141.13,48,256s93.13,208,208,208,208-93.13,208-208S370.87,48,256,48Zm74.14,252H181.86a16,16,0,0,1-12.29-26.23l74.13-89.09a16,16,0,0,1,24.6,0l74.13,89.09A16,16,0,0,1,330.14,300Z">
+                        </path>
+                    </g>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <div id="popup-message" style="display: none;">
+        <div class="popup-content">
+            <button class="popup-close" aria-label="Close popup">&times;</button>
+            <p id="popup-text"></p>
+            <button class="popup-ok">OK</button>
+        </div>
     </div>
 </body>
 

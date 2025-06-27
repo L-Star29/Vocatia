@@ -433,11 +433,35 @@ function setupJobCardListeners(tabName) {
 async function approveJob(jobId) {
     try {
         const jobRef = doc(db, 'jobs', jobId);
+        const jobSnap = await getDoc(jobRef);
+        
+        if (!jobSnap.exists()) {
+            showError('Job not found.');
+            return;
+        }
+        
+        const jobData = jobSnap.data();
+        
         await updateDoc(jobRef, {
             status: 'approved',
             approvedAt: serverTimestamp(),
             approvedBy: 'admin'
         });
+        
+        // Add notification for the employer
+        try {
+            await addDoc(collection(db, "notifications"), {
+                employerId: jobData.employerId,
+                type: 'job_approved',
+                message: `Your job posting "${jobData.title}" has been approved!`,
+                jobId: jobId,
+                jobTitle: jobData.title,
+                timestamp: serverTimestamp(),
+                read: false
+            });
+        } catch (notificationError) {
+            console.error('Error adding approval notification:', notificationError);
+        }
         
         showSuccess('Job approved successfully!');
         loadAllJobs(); // Refresh the data
@@ -574,12 +598,37 @@ if (closeRejectionBtn) {
 async function rejectJobWithReason(jobId, reason) {
     try {
         const jobRef = doc(db, 'jobs', jobId);
+        const jobSnap = await getDoc(jobRef);
+        
+        if (!jobSnap.exists()) {
+            showError('Job not found.');
+            return;
+        }
+        
+        const jobData = jobSnap.data();
+        
         await updateDoc(jobRef, {
             status: 'rejected',
             rejectedAt: serverTimestamp(),
             rejectedBy: 'admin',
             rejectionReason: reason.trim()
         });
+        
+        // Add notification for the employer
+        try {
+            await addDoc(collection(db, "notifications"), {
+                employerId: jobData.employerId,
+                type: 'job_rejected',
+                message: `Your job posting "${jobData.title}" was rejected. Reason: ${reason.trim()}`,
+                jobId: jobId,
+                jobTitle: jobData.title,
+                timestamp: serverTimestamp(),
+                read: false
+            });
+        } catch (notificationError) {
+            console.error('Error adding rejection notification:', notificationError);
+        }
+        
         showSuccess('Job rejected successfully!');
         loadAllJobs();
     } catch (error) {

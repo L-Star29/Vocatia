@@ -7,9 +7,8 @@
     <script src="script.js"></script>
     <script type="module" src="app.js"></script>
     <script type="module" src="jobs.js"></script>
-    <script type="module" src="dashboard.js"></script>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <title>Vocatia</title>
+    <link href="employer-style.css" rel="stylesheet" type="text/css" />
+    <title>Employer Dashboard - Vocatia</title>
     <link rel="icon" type="image/svg+xml" href="vocatia-backdrop-fit.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,80 +24,347 @@
 
 </head>
 
-
-<body class="employer-dashboard">
-    
-    <!--SIDEBAR NAVIGATION-->
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <a href="employer_index.html" class="sidebar-logo">
-                <img src="Vocatia.svg" alt="Vocatia Logo" class="sidebar-logo-image">
-                <img src="VocatiaTextLogoInverted.svg" alt="Vocatia Text Logo" class="sidebar-logo-image sidebar-logo-text">
-            </a>
-        </div>
-        <div class="sidebar-menu">
-            <a href="employer-dashboard.html" class="sidebar-item">🏠 Dashboard</a>
-            <a href="employer-postings.html" class="sidebar-item">📌 Job Postings</a>
-            <a href="employer-applicants.html" class="sidebar-item">👥 Applicants</a>
-            <a href="how-to.html" class="sidebar-item">❓ Help</a>
-        </div>
-        <div class="sidebar-footer">
+<body>
+    <!-- Header -->
+    <div class="banner">
+        <a href="index.html" class="logo-image-container">
+            <img src="Vocatia.svg" class="logo-image" />
+            <img src="VocatiaTextLogoInverted.svg" class="logo-content" />
+        </a>
+        <div class="admin-header-controls">
+            <span class="admin-welcome">Welcome, Employer</span>
             <button class="logout-button" onclick="logout()">Log Out</button>
         </div>
     </div>
     
-    <!--MAIN DASHBOARD-->
-    <div class="dashboard-container">
-        <header>
-            <h1>Welcome Back!</h1>
-            <p>Manage your job postings, review applicants, and connect with top talent.</p>
-        </header>
-
-        <div class="dashboard-cards">
-            <div class="card">
-                <h2>📌 Active Jobs</h2>
-                <p id="active-jobs">Loading...</p>
-            </div>
-            <div class="card">
-                <h2>⏳ Pending Approval</h2>
-                <p id="pending-jobs">Loading...</p>
-            </div>
-            <div class="card">
-                <h2>✅ Closed Jobs</h2>
-                <p id="closed-jobs">Loading...</p>
-            </div>
+    <!-- Dashboard Title -->
+    <div class="admin-panel-main">
+        <div class="admin-panel-header">
+            <h1 class="admin-panel-title">Employer <span class="purple-special">Dashboard</span></h1>
+            <p class="admin-panel-description">Manage your job postings, review applicants, and connect with top talent.</p>
         </div>
+    </div>
 
-        <div class="bottom-section">
-            <section class="recent-applicants">
-                <h2>Recent Applicants</h2>
-                <div id="applicants-list">
-                    <p>Loading applicants...</p>
+    <!-- Navigation Tabs -->
+    <div class="admin-tabs">
+        <button class="tab-button active" data-tab="overview">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            Overview
+        </button>
+        <button class="tab-button" data-tab="postings">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14,2 14,8 20,8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10,9 9,9 8,9"></polyline>
+            </svg>
+            Job Postings
+        </button>
+        <button class="tab-button" data-tab="applicants">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            Applicants
+        </button>
+    </div>
+
+    <!-- Overview Tab -->
+    <div id="overview" class="admin-tab-content active">
+        <div class="dashboard-overview">
+            <div class="overview-section quick-actions-section">
+                <h3>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    Quick Actions
+                </h3>
+                <div class="quick-actions">
+                    <a href="add-job.html" class="action-card">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        <span>Add New Job</span>
+                    </a>
+                    <a href="#postings" class="action-card" onclick="switchTab('postings')">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14,2 14,8 20,8"></polyline>
+                        </svg>
+                        <span>Manage Postings</span>
+                    </a>
+                    <a href="#applicants" class="action-card" onclick="switchTab('applicants')">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <span>View Applicants</span>
+                    </a>
+                    <a href="how-to.html" class="action-card">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                        <span>Get Help</span>
+                    </a>
                 </div>
-            </section>
-            <section class="recent-applicants add-job-button">
-                <a href="add-job.html">
-                    <button style="transform: scale(1.5); background-color: rgba(0, 0, 0, 0.8);" class="secondary-button add-job-btn">
-                        Add Job Posting
+            </div>
+            
+            <div class="overview-section recent-applicants-section">
+                <h3>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    Recent Applicants
+                </h3>
+                <div id="applicants-list" class="applicants-preview">
+                    <div style="text-align: center; color: #fff; padding: 20px;">
+                        Loading recent applicants...
+                    </div>
+                </div>
+            </div>
+
+            <div class="overview-section stats-section">
+                <h3>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                    Job Stats
+                </h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">Active Jobs</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Pending Approval</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="overview-section notifications-section">
+                <h3>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+                        <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+                    </svg>
+                    Updates
+                    <button onclick="refreshNotifications()" style="background: none; border: none; color: #fff; cursor: pointer; margin-left: 8px; padding: 4px; border-radius: 4px; transition: background 0.2s; font-size: 12px;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='none'">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+                            <path d="M21 3v5h-5"></path>
+                            <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+                            <path d="M3 21v-5h5"></path>
+                        </svg>
                     </button>
-                </a>
-            </section>
+                    <button onclick="deleteAllNotifications()" style="background: none; border: none; color: #fff; cursor: pointer; margin-left: 4px; padding: 4px; border-radius: 4px; transition: background 0.2s; font-size: 12px;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='none'" title="Delete all notifications">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 6h18"></path>
+                            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        </svg>
+                    </button>
+                </h3>
+                <div class="notifications-content">
+                    <ul id="notifications">
+                        <li>Loading notifications...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="overview-section add-job-section">
+                <h3>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Add Job
+                </h3>
+                <div class="add-job-content">
+                    <a href="add-job.html" class="add-job-button-large">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        <span>Create New Job Posting</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="overview-section help-section">
+                <h3>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    Help & Support
+                </h3>
+                <div class="help-content">
+                    <a href="how-to.html" class="help-button">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M9 9a3 3 0 0 1 6 0c0 2-3 2.5-3 4"></path>
+                            <line x1="12" y1="17" x2="12" y2="17"></line>
+                        </svg>
+                          
+                        <span>Get Help</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- RIGHT SIDEBAR-->
-    <div class="right-sidebar">
-        <h2>🔔 Notifications</h2>
-        <ul id="notifications">
-            <li>Loading...</li>
-        </ul>
-        <h2>📊 Job Insights</h2>
-        <p>Job views & application trends</p>
-        <div class="stats">
-            <p>👀 Views: <span id="job-views">0</span></p>
-            <p>📩 Applications: <span id="job-applications">0</span></p>
+    <!-- Job Postings Tab -->
+    <div id="postings" class="admin-tab-content">
+        <div class="postings-header">
+            <h3>Your Job Postings</h3>
+            <a href="add-job.html" class="add-job-button">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                Add New Job
+            </a>
+        </div>
+        <div id="job-listings" class="jobs-grid"></div>
+    </div>
+
+    <!-- Applicants Tab -->
+    <div id="applicants" class="admin-tab-content">
+        <div class="applicants-header">
+            <h3>Job Applicants</h3>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <select id="job-pdf-select" class="filter-select">
+                    <option value="">Select Job</option>
+                </select>
+                <button id="download-applicants-pdf" class="add-job-button" style="padding: 0.5rem 1.2rem; font-size: 0.95rem;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px; vertical-align: middle;"><path d="M12 5v14M19 12l-7 7-7-7"/><rect x="5" y="19" width="14" height="2" rx="1"/></svg>
+                    Download Applicants PDF
+                </button>
+            </div>
+        </div>
+        <div id="applicants-section" class="applicants-grid"></div>
+    </div>
+
+    <!-- Job Details Modal -->
+    <div id="job-details-modal" class="job-review-modal">
+        <div class="job-review-content">
+            <div class="job-review-header">
+                <h3>Job Details</h3>
+                <button id="close-job-modal" class="close-button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18"></path>
+                        <path d="M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="job-review-body">
+                <div class="job-details">
+                    <div class="detail-group">
+                        <label>Job Title:</label>
+                        <p id="modal-job-title"></p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Company:</label>
+                        <p id="modal-company"></p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Location:</label>
+                        <p id="modal-location"></p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Job Type:</label>
+                        <p id="modal-type"></p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Salary:</label>
+                        <p id="modal-salary"></p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Status:</label>
+                        <p id="modal-status"></p>
+                    </div>
+                    <div class="detail-group">
+                        <label>Description:</label>
+                        <p id="modal-description"></p>
+                    </div>
+                    <div class="detail-group" id="modal-rejection-reason" style="display: none;">
+                        <label>Rejection Reason:</label>
+                        <p style="color: #dc2626; font-weight: 500;"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="job-review-actions">
+                <button id="edit-job-btn" class="approve-button" onclick="editJob()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                    </svg>
+                    Edit Job
+                </button>
+                <button id="view-applicants-btn" class="approve-button">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    View Applicants
+                </button>
+                <button id="cancel-job-modal" class="cancel-button">Cancel</button>
+            </div>
         </div>
     </div>
+
+    <script>
+        function switchTab(tabName) {
+            // Remove active class from all tabs and content
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.admin-tab-content').forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked tab and corresponding content
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        // Add click event listeners to tab buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabName = this.getAttribute('data-tab');
+                    switchTab(tabName);
+                });
+            });
+        });
+    </script>
+
+    <!-- Popup Message -->
+    <div id="popup-message" class="popup-message" style="display: none;">
+        <div class="popup-content">
+            <p id="popup-text"></p>
+            <div class="popup-buttons">
+                <button id="popup-ok" class="popup-button">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="employer-dashboard.js"></script>
 </body>
 
 </html>

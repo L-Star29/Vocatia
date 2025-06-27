@@ -469,3 +469,67 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+#popup-message {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 8px;
+  max-width: 350px;
+  width: 90%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  position: relative;
+  font-family: Arial, sans-serif;
+}
+
+#popup-text {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #333;
+}
+.popup-close, .popup-ok {
+  cursor: pointer;
+  border: none;
+  background: #007bff;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.popup-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: transparent;
+  color: #aaa;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1;
+  padding: 0;
+}
+.popup-close:hover {
+  color: #000;
+}
+.popup-ok:hover {
+  background: #0056b3;
+}
+
+#confirm-popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}

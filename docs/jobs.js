@@ -6,6 +6,7 @@ import {
   doc,
   updateDoc,
   arrayUnion,
+  addDoc,
 } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
 
@@ -13,6 +14,53 @@ import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/
 const firestore = getFirestore();
 const jobsCollection = collection(firestore, "jobs");
 const auth = getAuth();
+
+// Global popup functions
+function showPopup(message) {
+  const popup = document.getElementById("popup-message");
+  const popupText = document.getElementById("popup-text");
+  
+  if (popup && popupText) {
+    popupText.textContent = message;
+    popup.style.display = "flex";
+  } else {
+    // Fallback: create popup if it doesn't exist
+    createPopupElement();
+    showPopup(message);
+  }
+}
+
+function closePopup() {
+  const popup = document.getElementById("popup-message");
+  if (popup) {
+    popup.style.display = "none";
+  }
+}
+
+function createPopupElement() {
+  // Check if popup already exists
+  if (document.getElementById("popup-message")) {
+    return;
+  }
+  
+  const popupHTML = `
+    <div id="popup-message" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1000; justify-content: center; align-items: center;">
+      <div style="background: white; padding: 30px; border-radius: 10px; max-width: 400px; text-align: center; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);">
+        <h3 style="margin: 0 0 20px 0; color: #333;">Application Status</h3>
+        <p id="popup-text" style="margin: 0 0 25px 0; color: #666; line-height: 1.5;"></p>
+        <button id="ok-popup" style="background: #2c6fc7; color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: 500;">OK</button>
+      </div>
+    </div>
+  `;
+  
+  document.body.insertAdjacentHTML('beforeend', popupHTML);
+  
+  // Add event listeners
+  const okBtn = document.getElementById("ok-popup");
+  if (okBtn) {
+    okBtn.addEventListener("click", closePopup);
+  }
+}
 
 function getNumericSalary(salary) {
   if (typeof salary === 'number') {
@@ -32,7 +80,7 @@ let currentPage = 1;
 const jobsPerPage = 12;
 let allJobs = [];
 let selectedJobId = null;
-
+let displayedJobs = [];
 
 // POP-UP FUNCTIONALITY
 document.addEventListener("DOMContentLoaded", () => {
@@ -40,19 +88,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const popupText = document.getElementById("popup-text");
   let closeBtn = document.getElementById("close-popup");
   let okBtn = document.getElementById("ok-popup");
+  
   if (popup && popupText && closeBtn && okBtn) {
     closeBtn.addEventListener("click", closePopup);
     okBtn.addEventListener("click", closePopup);
-  }
-  
-
-  function showPopup(message) {
-    popupText.textContent = message;
-    popup.style.display = "flex";
-  }
-
-  function closePopup() {
-    popup.style.display = "none";
+  } else {
+    // Create popup if it doesn't exist
+    createPopupElement();
   }
 
   if (closeBtn) closeBtn.addEventListener("click", closePopup);
@@ -117,19 +159,21 @@ async function fetchJobs() {
 
   const querySnapshot = await getDocs(jobsCollection);
   allJobs = []; // Reset jobs array
+
   querySnapshot.forEach((docSnapshot) => {
     const job = docSnapshot.data();
-    console.log("Fetched job:", job); // Log each job
 
-    allJobs.push({ ...job, id: docSnapshot.id });
+    // ✅ Only add jobs where status is 'approved'
+    if (job.status?.toLowerCase() === "approved") {
+      allJobs.push({ ...job, id: docSnapshot.id });
+    }
   });
 
-  console.log("All jobs:", allJobs); // Log all fetched jobs
-
-  renderJobs();
+  displayedJobs = [...allJobs]; // Start with all approved jobs visible
+  renderJobs(displayedJobs);
 }
 
-function renderJobs(jobListToRender = allJobs) {
+function renderJobs(jobListToRender = displayedJobs) {
   const jobList = document.getElementById("job-list");
   const pagination = document.getElementById("pagination");
 
@@ -223,23 +267,33 @@ function renderJobDetail(job) {
   const detailContainer = document.querySelector(".job-detail-container");
   if (!detailContainer || !job) return;
 
-  // Header section
   detailContainer.querySelector(".job-header h2").textContent = job.title || "";
   detailContainer.querySelector(".job-header h3").textContent = job.location || "";
 
-  // Stats section
+  // Update the apply button with job ID and event listener
+  const applyButton = detailContainer.querySelector(".job-apply button");
+  if (applyButton) {
+    applyButton.setAttribute("data-job-id", job.id);
+    applyButton.classList.add("apply-button");
+    applyButton.textContent = "Apply Now";
+    
+    // Remove existing event listeners and add new one
+    applyButton.removeEventListener("click", handleApplyClick);
+    applyButton.addEventListener("click", handleApplyClick);
+  }
+
   const stats = detailContainer.querySelectorAll(".job-stat");
   if (stats.length >= 4) {
     stats[0].querySelector("h2").textContent = job.experienceLevel || "";
     stats[1].querySelector("h2").textContent = job.jobType || "";
     stats[2].querySelector("h2").textContent = job.workType || "";
-    stats[3].querySelector("h2").textContent = job.salary || "";
+    const salaryValue = job.salary || "";
+    const formattedSalary = salaryValue ? `$${salaryValue}/hour` : "";
+    stats[3].querySelector("h2").textContent = formattedSalary;
   }
 
-  // About section
   detailContainer.querySelector(".job-about p").textContent = job.jobDescription || "";
 
-  // Responsibilities
   const responsibilitiesList = detailContainer.querySelector(".job-about ul");
   responsibilitiesList.innerHTML = "";
   (job.responsibilities || []).forEach(item => {
@@ -248,7 +302,6 @@ function renderJobDetail(job) {
     responsibilitiesList.appendChild(li);
   });
 
-  // Qualifications → Prerequisites
   const qualificationsList = detailContainer.querySelector(".job-prerequisites ul");
   qualificationsList.innerHTML = "";
   (job.qualifications || []).forEach(item => {
@@ -257,7 +310,6 @@ function renderJobDetail(job) {
     qualificationsList.appendChild(li);
   });
 
-  // Benefits → Eligibility box
   const benefitsList = detailContainer.querySelector(".job-benefits ul");
   benefitsList.innerHTML = "";
   (job.benefits || []).forEach(item => {
@@ -270,6 +322,10 @@ function renderJobDetail(job) {
 
 function handleApplyClick(event) {
   const jobId = event.target.getAttribute("data-job-id");
+  if (!jobId) {
+    console.error("No job ID found on apply button");
+    return;
+  }
   applyForJob(jobId);
 }
 
@@ -310,7 +366,7 @@ function addPaginationControls() {
 }
 
 
-// Function to apply for a job with full name
+// Function to apply for a job with student profile information
 async function applyForJob(jobId) {
   onAuthStateChanged(auth, async (user) => {
     if (!user) {
@@ -321,15 +377,85 @@ async function applyForJob(jobId) {
     const confirmed = await showCustomConfirm("Are you sure you want to apply for this job?");
     if (!confirmed) return;
 
-
-
     try {
+      // Get student profile information
+      const userDocRef = doc(firestore, "users", user.uid);
+      const userDocSnap = await getDoc(userDocRef);
+      
+      if (!userDocSnap.exists()) {
+        showPopup("Profile not found. Please complete your profile first.");
+        return;
+      }
+
+      const userData = userDocSnap.data();
+      
+      if (!userData.profileCompleted) {
+        showPopup("Please complete your profile before applying for jobs.");
+        window.location.href = "student-profile.html";
+        return;
+      }
+
+      // Get the job details
       const jobRef = doc(firestore, "jobs", jobId);
+      const jobSnap = await getDoc(jobRef);
+      
+      if (!jobSnap.exists()) {
+        showPopup("Job not found.");
+        return;
+      }
+
+      const jobData = jobSnap.data();
+
+      // Create application data with student profile information
+      const applicationData = {
+        studentId: user.uid,
+        studentName: userData.fullName || user.displayName || "Unknown",
+        studentEmail: userData.email || user.email,
+        appliedAt: new Date(),
+        status: "pending", // pending, accepted, rejected
+        // Student profile information
+        bio: userData.bio || "",
+        contact: userData.contact || "",
+        age: userData.age || "",
+        gpa: userData.gpa || "",
+        schoolName: userData.schoolName || "",
+        graduationYear: userData.graduationYear || "",
+        grade: userData.grade || "",
+        skills: userData.skills || "",
+        experience: userData.experience || "",
+        additionalInfo: userData.additionalInfo || "",
+        // Job information
+        jobTitle: jobData.title,
+        jobCompany: jobData.company,
+        jobLocation: jobData.location,
+        jobSalary: jobData.salary,
+        jobType: jobData.jobType,
+        experienceLevel: jobData.experienceLevel,
+        workType: jobData.workType
+      };
+
+      // Add the application to the job's applicants array
       await updateDoc(jobRef, {
-        applicants: arrayUnion(user.uid), // Use the user's UID instead of fullName
+        applicants: arrayUnion(user.uid),
+        [`applications.${user.uid}`]: applicationData
       });
 
-      showPopup(`You have successfully applied for this job!`);
+      // Add notification for the employer
+      try {
+        await addDoc(collection(firestore, "notifications"), {
+          employerId: jobData.employerId,
+          type: 'application',
+          message: `New application from ${userData.fullName || user.displayName || "Unknown"} for ${jobData.title}`,
+          jobId: jobId,
+          jobTitle: jobData.title,
+          timestamp: new Date(),
+          read: false
+        });
+      } catch (notificationError) {
+        console.error('Error adding application notification:', notificationError);
+      }
+
+      showPopup(`You have successfully applied for ${jobData.title} at ${jobData.company}!`);
     } catch (error) {
       console.error("Error applying for job:", error);
       showPopup("Failed to apply. Please try again.");
@@ -343,7 +469,7 @@ function searchJobs() {
   const searchInput = document.getElementById("job-title").value.toLowerCase();
 
   // Filter from original list
-  const filtered = allJobs.filter(job =>
+  const filtered = displayedJobs.filter(job =>
     job.title.toLowerCase().includes(searchInput)
   );
 
@@ -357,74 +483,51 @@ function searchJobs() {
 
 // Filter function
 async function filterJobs() {
-  const salaryFilters = Array.from(document.querySelectorAll('input[name="salary-radio"]:checked')).map(input => input.value);
-  const fieldFilters = Array.from(document.querySelectorAll('input[name="field-radio"]:checked')).map(input => input.value);
-  const jobTypeFilters = Array.from(document.querySelectorAll('input[name="jobtype-radio"]:checked')).map(input => input.value);
-  const searchInput = document.getElementById("job-title").value.toLowerCase();
+  const typeValue = document.getElementById("job-type")?.value?.toLowerCase();
+  const expValue = normalizeExpLevel(document.getElementById("experience-level")?.value);
+  const workValue = document.getElementById("work-type")?.value?.toLowerCase();
+  const minSalary = parseFloat(document.getElementById("salary")?.value);
 
-  // Reset current page when filtering
+  // Reset to first page
   currentPage = 1;
 
-  // Filter jobs based on selected criteria
   const filteredJobs = allJobs.filter(job => {
-    // Search text filter
-    const matchesSearch = !searchInput || 
-      job.title.toLowerCase().includes(searchInput) ||
-      job.company.toLowerCase().includes(searchInput) ||
-      job.description.toLowerCase().includes(searchInput);
+    const salary = getNumericSalary(job.salary);
+    const jobType = job.jobType?.toLowerCase();
+    const experienceLevel = normalizeExpLevel(job.experienceLevel);
+    const workType = job.workType?.toLowerCase();
 
-    // Salary filter
-    const numericSalary = getNumericSalary(job.salary);
-    const matchesSalary = salaryFilters.length === 0 || salaryFilters.some(filter => {
-      if (numericSalary === null) return false;
-      switch(filter) {
-        case 'Under15':
-          return numericSalary < 15;
-        case '15-18':
-          return numericSalary >= 15 && numericSalary <= 18;
-        case '18+':
-          return numericSalary > 18;
-        default:
-          return true;
-      }
-      });
 
-    // Field filter
-    const matchesField = fieldFilters.length === 0 || fieldFilters.includes(job.category);
+    const matchesType = !typeValue || jobType === typeValue;
+    const matchesExp = !expValue || experienceLevel === expValue;
+    const matchesWork = !workValue || workType === workValue;
+    const matchesSalary = isNaN(minSalary) || (salary !== null && salary >= minSalary);
 
-    // Job type filter
-    const matchesJobType = jobTypeFilters.length === 0 || jobTypeFilters.includes(job.type);
-
-    return matchesSearch && matchesSalary && matchesField && matchesJobType;
+    return matchesType && matchesExp && matchesWork && matchesSalary;
   });
 
-  // Update the jobs count
-  const jobsCount = document.querySelector('.jobs-count');
-  if (jobsCount) {
-    jobsCount.textContent = `${filteredJobs.length} results`;
-  }
-
-  // Update the displayed jobs
-  allJobs = filteredJobs;
+  displayedJobs = filteredJobs;
+  selectedJobId = null;
   renderJobs();
 }
 
+function normalizeExpLevel(value) {
+  return value?.toLowerCase().replace(/[-\s]+/g, " ").trim(); // convert hyphens and extra spaces to single space
+}
+
+
 // Clear filters function
 function clearFilters() {
-  // Clear all checkboxes
-  document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-    checkbox.checked = false;
-  });
+  document.getElementById("job-type").value = "";
+  document.getElementById("experience-level").value = "";
+  document.getElementById("work-type").value = "";
+  document.getElementById("salary").value = "";
 
-  // Clear search input
-  const searchInput = document.getElementById("job-title");
-  if (searchInput) {
-    searchInput.value = '';
-  }
-
-  // Reset to original jobs
-  fetchJobs();
+  displayedJobs = [...allJobs];
+  selectedJobId = null;
+  renderJobs(displayedJobs);
 }
+
 
 // Add event listeners for filters
 document.addEventListener("DOMContentLoaded", () => {
@@ -436,6 +539,7 @@ document.addEventListener("DOMContentLoaded", () => {
       filterJobs();
     });
   }
+
 
   // Clear filters button
   const clearButton = document.querySelector(".clear-button");
@@ -456,4 +560,25 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
     checkbox.addEventListener("change", filterJobs);
   });
+
+  ["job-type", "experience-level", "work-type"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener("change", () => {
+        filterJobs();
+      });
+    }
+  });
+  
+  const salaryInput = document.getElementById("salary");
+  if (salaryInput) {
+    let salaryTimer;
+    salaryInput.addEventListener("input", () => {
+      clearTimeout(salaryTimer);
+      salaryTimer = setTimeout(() => {
+        filterJobs();
+      }, 300);
+    });
+  }
+
 });
